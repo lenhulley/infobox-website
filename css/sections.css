@@ -80,6 +80,12 @@
   gap: var(--space-4);
 }
 
+@media (max-width: 1024px) {
+  .hero .tag {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
@@ -89,10 +95,6 @@
 
   .hero h1 {
     font-size: var(--text-4xl);
-  }
-
-  .hero .tag {
-    display: none;
   }
 }
 
