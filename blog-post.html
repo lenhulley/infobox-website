@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The honest cost of AI-assisted development — Infobox Insights</title>
+  <meta name="description" content="We've been using Claude Code and the Claude API in production delivery for over a year. Here's what actually changed in cost, quality, and client relationships.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Infobox home">
+        <img src="assets/img/infobox-logo.png" alt="Infobox" width="160" height="40">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="solution-detail.html">Claims Management</a></li>
+              <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
+              <li><a href="solutions.html">View all solutions</a></li>
+            </ul>
+          </li>
+          
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to us</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="technology.html">Technology</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html" class="btn btn-primary">Talk to us</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&h=600&q=80" alt="Abstract view of global data networks and connections" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">AI</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">24 March 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 8 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">The honest cost of AI-assisted development: what we've learned after 18 months</h1>
+              <p class="text-lead">We've been using Claude Code and the Claude API in production delivery for over a year. Here's what actually changed — in cost, quality, and client relationships — and what didn't.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>When we started integrating AI tools into our development workflow in late 2024, the conversation around AI-assisted coding was dominated by two camps: people claiming it would replace developers within months, and people dismissing it as glorified autocomplete.</p>
+
+              <p>Eighteen months later, we've found that the truth — predictably — is more nuanced. AI has genuinely changed how we work, what we charge, and how we talk to clients about delivery. But it hasn't changed the fundamental nature of the work itself.</p>
+
+              <h2>What actually got faster</h2>
+
+              <p>The most significant time savings have come from tasks that are well-defined, repetitive, and low-risk. Boilerplate code generation, unit test scaffolding, documentation drafts, and data migration scripts all benefit enormously from AI assistance.</p>
+
+              <p>For a typical Umbraco project, AI-assisted development has reduced our time on these categories of work by roughly 40%. That's real and significant. For a project that previously took 12 weeks, those efficiency gains might save 2-3 weeks of developer time.</p>
+
+              <blockquote>
+                The efficiency gains from AI aren't evenly distributed across a project. Architecture, client conversations, and testing strategy still take exactly as long as they always did — because they require judgement, not generation.
+              </blockquote>
+
+              <h2>What didn't change</h2>
+
+              <p>Architecture decisions, requirements gathering, accessibility auditing, security review, and performance optimisation — the high-judgement work that makes or breaks a project — haven't gotten meaningfully faster. These tasks require understanding context, weighing trade-offs, and making decisions that AI tools aren't equipped to make reliably.</p>
+
+              <p>We've also found that code review takes slightly <em>longer</em> when reviewing AI-generated code, because the reviewer needs to verify not just correctness but intent. Hand-written code carries implicit design decisions; AI-generated code can be technically correct but architecturally inconsistent.</p>
+
+              <h2>What we charge (and why we tell you)</h2>
+
+              <p>This is where our approach diverges from most consultancies. We break down our estimates into AI-assisted and hand-crafted categories, and we charge differently for each.</p>
+
+              <p>For AI-assisted work — boilerplate, scaffolding, initial implementations — we charge a lower rate that reflects the reduced human time involved. For architecture, review, and high-judgement work, we charge our standard rate.</p>
+
+              <p>The result is that clients see genuine cost savings (typically 15-25% on overall project cost) without wondering whether we're quietly pocketing efficiency gains. And they get to decide whether to invest the savings in additional features, more thorough testing, or simply a lower invoice.</p>
+
+              <h2>The client conversation</h2>
+
+              <p>We were initially nervous about telling clients we use AI in delivery. We worried it would undermine confidence in our work or reduce the perceived value of our expertise.</p>
+
+              <p>The opposite happened. Clients — particularly CTOs and IT directors — responded positively to the transparency. Several told us they were already assuming their vendors used AI, and appreciated that we were the only ones being explicit about it.</p>
+
+              <p>One CTO at a membership organisation told us: "I'd rather work with someone who tells me how the sausage is made than someone who pretends it's all hand-crafted artisan code."</p>
+
+              <h2>What we'd recommend</h2>
+
+              <p>If you're a technology consultancy considering AI integration, here's what we'd suggest based on our experience:</p>
+
+              <ul>
+                <li><strong>Be transparent with clients.</strong> The trust dividend of honesty is worth more than any short-term margin from hiding AI usage.</li>
+                <li><strong>Don't reduce review time.</strong> AI-generated code needs more scrutiny, not less. Budget for this.</li>
+                <li><strong>Track your actual efficiency gains.</strong> Don't assume the same savings across every project type. Measure it.</li>
+                <li><strong>Invest the savings wisely.</strong> The time AI frees up should go into the work that requires human judgement — testing, accessibility, security, architecture.</li>
+              </ul>
+
+              <p>AI hasn't changed what good software development looks like. It's changed the economics of getting there. That's valuable — but only if you're honest about it.</p>
+            </div>
+
+            <!-- Author byline -->
+            <div class="flex items-center gap-4" style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: var(--border-subtle);">
+              <div class="team-avatar" style="width: 56px; height: 56px; flex-shrink: 0; margin: 0;">JD</div>
+              <div>
+                <div style="font-family: var(--font-display); font-weight: 700;">Jane Doe</div>
+                <div style="font-size: var(--text-sm); color: var(--color-text-secondary);">Technical Director at Infobox. Writes about technology strategy, AI in delivery, and the Microsoft ecosystem.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics on laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="post-card-date">18 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">Umbraco 17: what's new and why it matters</a></h3>
+              <p class="post-card-excerpt">The latest release brings a rebuilt backoffice and improved headless support.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&h=340&q=80" alt="Tall trees in a misty forest" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Field Service</span>
+                <span class="post-card-date">10 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">Offline-first mobile apps with .NET MAUI</a></h3>
+              <p class="post-card-excerpt">How we architect experiences that sync reliably when signal returns.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="160">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&h=340&q=80" alt="Code on a dark screen with warm lighting" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-silver">Architecture</span>
+                <span class="post-card-date">28 February 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">Connecting Umbraco to Dynamics 365</a></h3>
+              <p class="post-card-excerpt">Integration patterns that survive real-world load and complexity.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo" aria-label="Infobox home">
+            <img src="assets/img/infobox-logo.png" alt="Infobox" width="140" height="36">
+          </a>
+          <p>UK-based technology consultancy. Building platforms that solve real problems for real organisations.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Solutions</div>
+          <div class="footer-links">
+            <a href="solution-detail.html">Claims Management</a>
+            <a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a>
+            <a href="solutions.html">All solutions</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="technology.html">Technology</a>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Connect</div>
+          <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Infobox. All rights reserved.</span>
+        <span>Built on Umbraco, powered by Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

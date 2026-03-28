@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umbraco &amp; Dataverse Portals — Infobox</title>
+  <meta name="description" content="Authenticated portals built on Umbraco and connected to Dataverse — a better alternative to Power Pages, with full design control and no per-user licensing.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Infobox home">
+        <img src="assets/img/infobox-logo.png" alt="Infobox" width="160" height="40">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="solution-detail.html">Claims Management</a></li>
+              <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
+              <li><a href="solutions.html">View all solutions</a></li>
+            </ul>
+          </li>
+
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to us</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="technology.html">Technology</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html" class="btn btn-primary">Talk to us</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero hero-medium geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag tag-blue" data-hero-animate>Portals</span>
+          <h1 data-hero-animate>Umbraco portals connected to Dataverse. The alternative to Power Pages.</h1>
+          <p class="text-lead" data-hero-animate>Authenticated, data-driven portals with full design control, no per-user licensing, and none of the limitations that make Power Pages frustrating to work with.</p>
+          <div class="hero-buttons" data-hero-animate>
+            <a href="contact.html" class="btn btn-primary-inverse">Talk to us about this</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem with Power Pages -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="grid grid-7-5" style="align-items: start;">
+          <div data-reveal>
+            <div class="section-header">
+              <span class="tag tag-red">The problem</span>
+              <h2>Power Pages looks simple until you actually try to build something real</h2>
+            </div>
+            <div class="prose">
+              <p>Power Pages promises low-code portals connected to Dataverse. In practice, you hit the limitations fast: rigid templates, limited design control, per-user licensing costs that scale unpredictably, and a development experience that fights you at every turn.</p>
+              <p>When you need authenticated portals that look and feel like your brand — not like a Microsoft template — and you need them to scale without licensing surprises, Power Pages becomes the wrong tool for the job.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="100">
+            <div class="card card-accent-red">
+              <h3 class="card-title">Common Power Pages frustrations</h3>
+              <ul style="list-style: none; padding: 0; margin-top: var(--space-4);">
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Rigid templates with limited design flexibility</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Per-authenticated-user licensing costs</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Complex Liquid templating language</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Limited control over URL structure and SEO</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Difficult to version control and deploy</li>
+                <li style="padding: var(--space-2) 0; font-size: var(--text-sm);">Performance limitations at scale</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">The solution</span>
+          <h2>Umbraco as the portal, Dataverse as the data layer</h2>
+          <p class="text-lead">We build authenticated portals on Umbraco that connect directly to Dataverse via the Web API — giving you the editorial control of a CMS with the data power of the Microsoft platform.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Full design control</h3>
+            <p class="card-description">Your portal looks and feels like your brand. No template constraints, no Microsoft chrome. Pixel-perfect design with Umbraco's flexible rendering.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">No per-user licensing</h3>
+            <p class="card-description">Umbraco is open source. Your licensing costs don't scale with the number of authenticated users — a fundamental cost advantage over Power Pages.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Dataverse integration</h3>
+            <p class="card-description">Read, write, and query Dataverse tables directly. Contacts, cases, custom entities — all accessible through secure, authenticated API calls.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Editorial content + live data</h3>
+            <p class="card-description">Marketing pages, help articles, and news managed by editors in Umbraco. Account dashboards, case tracking, and forms powered by Dataverse. One platform.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">Proper CI/CD and source control</h3>
+            <p class="card-description">Umbraco projects live in Git. They deploy through Azure DevOps or GitHub Actions. No clicking through a portal designer to make changes.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Performance at scale</h3>
+            <p class="card-description">Azure App Service with CDN, caching, and auto-scaling. Handle thousands of concurrent authenticated users without the performance ceiling of Power Pages.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Comparison</span>
+          <h2>Power Pages vs Umbraco + Dataverse</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2" style="max-width: 900px;">
+          <div class="card" data-reveal data-reveal-delay="0" style="border-top: 3px solid var(--color-silver);">
+            <h3 class="card-title" style="color: var(--color-silver);">Power Pages</h3>
+            <ul style="list-style: none; padding: 0; margin-top: var(--space-4);">
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Per-authenticated-user licensing</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Template-driven design</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Liquid templating</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Limited SEO control</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Portal designer deployment</li>
+              <li style="padding: var(--space-2) 0; font-size: var(--text-sm);">Microsoft-managed infrastructure</li>
+            </ul>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title" style="color: var(--color-blue);">Umbraco + Dataverse</h3>
+            <ul style="list-style: none; padding: 0; margin-top: var(--space-4);">
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Open-source CMS, no per-user cost</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Complete design freedom</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">C# / Razor — standard .NET development</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Full control over URLs, metadata, structured data</li>
+              <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Git + CI/CD pipelines</li>
+              <li style="padding: var(--space-2) 0; font-size: var(--text-sm);">Azure-hosted with auto-scaling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology stack -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Technology stack</span>
+          <h2>Built on trusted foundations</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-blue">Umbraco 17</span>
+          <span class="tag tag-blue">.NET 10</span>
+          <span class="tag tag-blue">Dataverse Web API</span>
+          <span class="tag tag-blue">ASP.NET Core Identity</span>
+          <span class="tag tag-blue">Microsoft Azure</span>
+          <span class="tag tag-blue">Azure App Service</span>
+          <span class="tag tag-silver">OAuth 2.0 / MSAL</span>
+          <span class="tag tag-silver">Azure DevOps</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-green">Who it's for</span>
+          <h2>Any organisation that needs an authenticated portal connected to Dataverse</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-green">Membership organisations</span>
+          <span class="tag tag-green">Customer self-service</span>
+          <span class="tag tag-green">Partner portals</span>
+          <span class="tag tag-green">Case management</span>
+          <span class="tag tag-green">CPD &amp; training platforms</span>
+          <span class="tag tag-green">Supplier portals</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related solutions -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Related solutions</span>
+          <h2>You might also need</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2" style="max-width: 800px;">
+          <div class="card" data-reveal data-reveal-delay="0">
+            <div class="card-icon card-icon-red">&#128295;</div>
+            <span class="tag tag-blue">Claims &amp; Workflow</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Claims Management Platform</h3>
+            <p class="card-description">End-to-end claims management with multi-party workflows, computed statuses, and full audit trail.</p>
+            <a href="solution-detail.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="card" data-reveal data-reveal-delay="80">
+            <div class="card-icon card-icon-blue">&#128200;</div>
+            <span class="tag tag-blue">CRM</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Dynamics 365 &amp; Dataverse</h3>
+            <p class="card-description">The data platform behind the portal — contact management, case tracking, and business process automation.</p>
+            <a href="solutions.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-lg dark-panel dark-panel-cta geo-bg geo-bg-dark">
+      <div class="container">
+        <h2 data-reveal>Stuck with Power Pages? There's a better way.</h2>
+        <p data-reveal>Tell us what your portal needs to do. We'll show you what Umbraco and Dataverse can deliver together.</p>
+        <a href="contact.html" class="btn btn-primary-inverse" data-reveal>Start a conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo" aria-label="Infobox home">
+            <img src="assets/img/infobox-logo.png" alt="Infobox" width="140" height="36">
+          </a>
+          <p>UK-based technology consultancy. Building platforms that solve real problems for real organisations.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Solutions</div>
+          <div class="footer-links">
+            <a href="solution-detail.html">Claims Management</a>
+            <a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a>
+            <a href="solutions.html">All solutions</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="technology.html">Technology</a>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Connect</div>
+          <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Infobox. All rights reserved.</span>
+        <span>Built on Umbraco, powered by Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

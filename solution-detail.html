@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Claims Management Platform — Infobox</title>
+  <meta name="description" content="Multi-tenant property claims management platform — tracking claims from initial report through appraisal, surveyor review, and solicitor handover. Built on .NET 10 and Azure.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Infobox home">
+        <img src="assets/img/infobox-logo.png" alt="Infobox" width="160" height="40">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="solution-detail.html">Claims Management</a></li>
+              <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
+              <li><a href="solutions.html">View all solutions</a></li>
+            </ul>
+          </li>
+          
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to us</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="technology.html">Technology</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html" class="btn btn-primary">Talk to us</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero hero-medium geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag tag-blue" data-hero-animate>Claims &amp; Workflow</span>
+          <h1 data-hero-animate>Property claims management, end to end</h1>
+          <p class="text-lead" data-hero-animate>A multi-tenant platform that tracks property damage claims from initial report through appraisal, chartered surveyor review, and solicitor handover — with role-based access at every stage.</p>
+          <div class="hero-buttons" data-hero-animate>
+            <a href="contact.html" class="btn btn-primary-inverse">Talk to us about this</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="grid grid-7-5" style="align-items: start;">
+          <div data-reveal>
+            <div class="section-header">
+              <span class="tag tag-red">The challenge</span>
+              <h2>Claims processes involve too many people and too many spreadsheets</h2>
+            </div>
+            <div class="prose">
+              <p>Property claims management typically involves multiple independent organisations — lead generators, appraisers, chartered surveyors, and solicitors — each needing visibility of different information at different stages.</p>
+              <p>Without a shared platform, claims get lost between email inboxes, status updates lag behind reality, and nobody has a single view of where each case actually stands. Compliance suffers, handovers fail, and costs escalate.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="100">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&h=600&q=80" alt="Modern building with geometric architectural forms" style="aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius-lg); width: 100%;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">How it works</span>
+          <h2>A single platform connecting every party in the claims lifecycle</h2>
+          <p class="text-lead">Each claim moves through a defined workflow. Status is always computed from real data — never manually set — so it's always accurate.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Claim submission</h3>
+            <p class="card-description">Lead generators submit new property claims with address, postcode, and contact details. Claims are queued for administrator review.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">Approval &amp; allocation</h3>
+            <p class="card-description">Administrators approve or reject claims, then allocate approved cases to property appraisers for inspection and survey.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Inspection &amp; survey</h3>
+            <p class="card-description">Appraisers schedule appointments, conduct property surveys, and compile findings into a formal report for review.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Chartered surveyor review</h3>
+            <p class="card-description">Independent chartered surveyors review and approve the appraisal report, ensuring quality and compliance standards are met.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">Solicitor handover</h3>
+            <p class="card-description">Completed cases are passed to solicitors with full documentation and audit trail for legal proceedings.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Real-time dashboard</h3>
+            <p class="card-description">Status count cards, filtered job lists, and full audit trail — every stakeholder sees exactly what they need to see, nothing more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key architecture -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="grid grid-7-5" style="align-items: start;">
+          <div data-reveal>
+            <div class="section-header">
+              <span class="tag tag-blue">Architecture</span>
+              <h2>Computed status, immutable audit trail</h2>
+            </div>
+            <div class="prose">
+              <p>Claim status is never stored in the database — it's computed on-read from date fields and workflow events. This eliminates data inconsistency and means the status is always the truth, not a stale label someone forgot to update.</p>
+              <p>Every workflow action generates an immutable system note. Notes are append-only — never edited or deleted — creating a complete, tamper-proof audit trail from submission to solicitor handover.</p>
+              <p>The platform supports multiple independent companies working in parallel — lead generators, appraisers, chartered surveyors, and solicitors — each with their own users, roles, and visibility rules.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="100">
+            <div class="card card-accent">
+              <h3 class="card-title">14 computed statuses</h3>
+              <ul style="list-style: none; padding: 0; margin-top: var(--space-4);">
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Pending Approval &rarr; Approved / Rejected</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Awaiting Allocation &rarr; Allocated</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Appointment Scheduled &rarr; Survey Complete</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Report Preparation &rarr; CS Review</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">CS Approved &rarr; Passed to Solicitor</li>
+                <li style="padding: var(--space-2) 0; font-size: var(--text-sm);">Failed Survey (terminal state)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology stack -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Technology stack</span>
+          <h2>Built on trusted foundations</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-blue">.NET 10</span>
+          <span class="tag tag-blue">ASP.NET Core Razor Pages</span>
+          <span class="tag tag-blue">Entity Framework Core</span>
+          <span class="tag tag-blue">ASP.NET Core Identity</span>
+          <span class="tag tag-blue">Microsoft Azure</span>
+          <span class="tag tag-blue">Azure App Service</span>
+          <span class="tag tag-silver">Role-based access control</span>
+          <span class="tag tag-silver">SQL Server</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-green">Who it's for</span>
+          <h2>Built for these roles</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-green">Administrators</span>
+          <span class="tag tag-green">Lead Generators</span>
+          <span class="tag tag-green">Property Appraisers</span>
+          <span class="tag tag-green">Chartered Surveyors</span>
+          <span class="tag tag-green">Solicitors</span>
+          <span class="tag tag-green">Homeowners</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related solutions -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Related solutions</span>
+          <h2>You might also need</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2" style="max-width: 800px;">
+          <div class="card" data-reveal data-reveal-delay="0">
+            <div class="card-icon card-icon-blue">&#127970;</div>
+            <span class="tag tag-blue">Portals</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Umbraco &amp; Dataverse Portals</h3>
+            <p class="card-description">Authenticated portals connected to Dataverse — a better alternative to Power Pages, with full design control.</p>
+            <a href="solution-portal.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="card" data-reveal data-reveal-delay="80">
+            <div class="card-icon card-icon-blue">&#128200;</div>
+            <span class="tag tag-blue">CRM</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Dynamics 365 &amp; Dataverse</h3>
+            <p class="card-description">The data platform behind the workflows — contact management, case tracking, and reporting.</p>
+            <a href="solutions.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-lg dark-panel dark-panel-cta geo-bg geo-bg-dark">
+      <div class="container">
+        <h2 data-reveal>Managing claims across multiple organisations?</h2>
+        <p data-reveal>Tell us about your workflow. We'll show you how a shared platform can replace the spreadsheets and email chains.</p>
+        <a href="contact.html" class="btn btn-primary-inverse" data-reveal>Start a conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo" aria-label="Infobox home">
+            <img src="assets/img/infobox-logo.png" alt="Infobox" width="140" height="36">
+          </a>
+          <p>UK-based technology consultancy. Building platforms that solve real problems for real organisations.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Solutions</div>
+          <div class="footer-links">
+            <a href="solution-detail.html">Claims Management</a>
+            <a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a>
+            <a href="solutions.html">All solutions</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="technology.html">Technology</a>
+            <a href="insights.html">Insights</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Connect</div>
+          <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Email us</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Infobox. All rights reserved.</span>
+        <span>Built on Umbraco, powered by Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

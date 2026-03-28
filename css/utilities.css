@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Infobox — Utilities
+   Spacing, visibility, and display helpers
+   ========================================================================== */
+
+/* Visually hidden (accessible to screen readers) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive visibility */
+.hidden { display: none; }
+
+@media (max-width: 767px) {
+  .md\:show { display: none; }
+}
+
+@media (min-width: 768px) {
+  .md\:show { display: block; }
+  .md\:hide { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:show { display: block; }
+  .lg\:hide { display: none; }
+}
+
+/* Margin utilities */
+.mt-0  { margin-top: 0; }
+.mt-2  { margin-top: var(--space-2); }
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-10 { margin-top: var(--space-10); }
+.mt-12 { margin-top: var(--space-12); }
+
+.mb-0  { margin-bottom: 0; }
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+
+/* Padding utilities */
+.pt-0  { padding-top: 0; }
+.pb-0  { padding-bottom: 0; }
+
+/* Width */
+.w-full { width: 100%; }
+.max-w-sm  { max-width: 400px; }
+.max-w-md  { max-width: 600px; }
+.max-w-lg  { max-width: 800px; }
+.max-w-xl  { max-width: 1000px; }
