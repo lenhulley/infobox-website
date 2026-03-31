@@ -90,13 +90,11 @@
 }
 
 /* Asymmetric layouts */
-.grid-7-5 {
-  grid-template-columns: 1fr;
-}
-.grid-8-4 {
-  grid-template-columns: 1fr;
-}
+.grid-7-5,
+.grid-8-4,
 .grid-5-7 {
+  display: grid;
+  gap: var(--gutter);
   grid-template-columns: 1fr;
 }
 
