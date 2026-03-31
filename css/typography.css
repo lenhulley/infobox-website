@@ -48,12 +48,25 @@ p {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: 1.65;
+  word-spacing: 0.05em;
   color: var(--color-text-primary);
 }
 
 /* Prose container — max line length */
 .prose {
   max-width: 68ch;
+}
+
+.prose a {
+  color: var(--color-action);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.prose a:hover {
+  color: var(--color-action-hover);
+  text-decoration-thickness: 2px;
 }
 
 .prose p + p {

@@ -147,7 +147,8 @@
   transition: transform var(--transition-base);
 }
 
-.nav-dropdown:hover .nav-dropdown-toggle svg {
+.nav-dropdown:hover .nav-dropdown-toggle svg,
+.nav-dropdown:focus-within .nav-dropdown-toggle svg {
   transform: rotate(180deg);
 }
 
@@ -166,7 +167,8 @@
   transition: all var(--transition-base);
 }
 
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -569,7 +571,7 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: var(--color-silver);
+  color: #767676;
 }
 
 .form-textarea {

@@ -60,15 +60,22 @@
   function showFieldError(field, message) {
     field.classList.add('has-error');
     field.style.borderColor = 'var(--color-alert)';
+    field.setAttribute('aria-invalid', 'true');
+    var errorId = 'error-' + (field.id || field.name);
     var error = document.createElement('div');
     error.className = 'form-error';
+    error.id = errorId;
+    error.setAttribute('role', 'alert');
     error.textContent = message;
+    field.setAttribute('aria-describedby', errorId);
     field.parentNode.appendChild(error);
 
     // Clear error on input
     field.addEventListener('input', function handler() {
       field.classList.remove('has-error');
       field.style.borderColor = '';
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
       var err = field.parentNode.querySelector('.form-error');
       if (err) err.remove();
       field.removeEventListener('input', handler);

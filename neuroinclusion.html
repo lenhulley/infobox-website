@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuroinclusive by Design — Infobox</title>
+  <meta name="description" content="How Infobox builds digital platforms that work for neurodivergent users. Our approach to neuroinclusive design covers ADHD, autism, dyslexia, and more.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Infobox home">
+        <img src="assets/img/infobox-logo.png" alt="Infobox" width="160" height="40">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="solution-detail.html">Claims Management</a></li>
+              <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
+              <li><a href="solutions.html">View all solutions</a></li>
+            </ul>
+          </li>
+
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to us</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="technology.html">Technology</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html" class="btn btn-primary">Talk to us</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero hero-medium geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag tag-green" data-hero-animate>Inclusive Design</span>
+          <h1 data-hero-animate>Neuroinclusive by Design</h1>
+          <p class="text-lead" data-hero-animate>Around 1 in 7 people are neurodivergent. We design and build digital platforms that work for how people actually think &mdash; not how we assume they do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is neurodiversity -->
+    <section class="section-padding bg-page">
+      <div class="container">
+        <div class="grid-7-5">
+          <div>
+            <div class="section-header" data-reveal>
+              <span class="tag tag-green">Understanding Neurodiversity</span>
+              <h2 style="margin-top: var(--space-4);">What neurodiversity means</h2>
+            </div>
+            <div class="prose" data-reveal>
+              <p>Neurodiversity is the natural variation in how human brains work. It includes conditions such as ADHD, autism, dyslexia, dyspraxia, dyscalculia, and Tourette syndrome &mdash; among others.</p>
+              <p>These are not deficits. They are differences in how people process information, focus attention, interpret sensory input, and interact with the world. A platform that only works for one type of brain excludes a significant portion of its potential users.</p>
+              <p>In the UK alone, an estimated 15&ndash;20% of the population is neurodivergent. That includes your employees, your customers, and your stakeholders. Building inclusive platforms is not a niche concern &mdash; it is a fundamental requirement for any organisation that wants its technology to work for everyone.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="120">
+            <div class="card card-accent-green" style="margin-top: var(--space-8);">
+              <h3 class="card-title" style="font-size: var(--text-lg);">Neurodivergent conditions include:</h3>
+              <ul style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3);">
+                <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+                  <span style="color: var(--color-green); font-weight: 700; flex-shrink: 0;">ADHD</span>
+                  <span style="color: var(--color-text-secondary); font-size: var(--text-sm);">Differences in attention, focus, and executive function</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+                  <span style="color: var(--color-green); font-weight: 700; flex-shrink: 0;">Autism</span>
+                  <span style="color: var(--color-text-secondary); font-size: var(--text-sm);">Differences in social processing, sensory input, and pattern recognition</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+                  <span style="color: var(--color-green); font-weight: 700; flex-shrink: 0;">Dyslexia</span>
+                  <span style="color: var(--color-text-secondary); font-size: var(--text-sm);">Differences in reading, writing, and language processing</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+                  <span style="color: var(--color-green); font-weight: 700; flex-shrink: 0;">Dyspraxia</span>
+                  <span style="color: var(--color-text-secondary); font-size: var(--text-sm);">Differences in motor coordination and spatial awareness</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-3);">
+                  <span style="color: var(--color-green); font-weight: 700; flex-shrink: 0;">Dyscalculia</span>
+                  <span style="color: var(--color-text-secondary); font-size: var(--text-sm);">Differences in number processing and mathematical reasoning</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why it matters in digital -->
+    <section class="section-padding white-section">
+      <div class="container">
+        <div class="section-header" style="text-align: center;" data-reveal>
+          <span class="tag tag-blue">Why It Matters</span>
+          <h2 style="margin-top: var(--space-4);">Digital platforms create barriers</h2>
+          <p class="text-lead" style="margin-left: auto; margin-right: auto;">Most digital platforms are designed for a narrow definition of &ldquo;normal.&rdquo; That means they actively exclude neurodivergent users through poor design choices.</p>
+        </div>
+        <div class="grid-3" data-reveal>
+          <div class="card" data-reveal data-reveal-delay="0">
+            <div class="card-icon card-icon-red">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="card-title">Visual overload</h3>
+            <p class="card-description" style="-webkit-line-clamp: unset;">Busy layouts, clashing colours, and animated elements create sensory overwhelm. For users with ADHD or autism, this makes it impossible to focus on the task at hand.</p>
+          </div>
+          <div class="card" data-reveal data-reveal-delay="80">
+            <div class="card-icon card-icon-red">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="card-title">Dense, complex content</h3>
+            <p class="card-description" style="-webkit-line-clamp: unset;">Long paragraphs, jargon-heavy language, and unclear instructions put an unfair cognitive load on users with dyslexia, ADHD, or processing differences.</p>
+          </div>
+          <div class="card" data-reveal data-reveal-delay="160">
+            <div class="card-icon card-icon-red">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="card-title">Unpredictable navigation</h3>
+            <p class="card-description" style="-webkit-line-clamp: unset;">Inconsistent menus, surprise modal pop-ups, and changing layouts create anxiety and confusion. Predictability is a core need for many neurodivergent users.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our approach -->
+    <section class="section-padding bg-page">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-green">Our Approach</span>
+          <h2 style="margin-top: var(--space-4);">How we build neuroinclusive platforms</h2>
+          <p class="text-lead">Every platform we build follows these principles &mdash; not as a bolt-on accessibility pass, but as a core part of the design and development process.</p>
+        </div>
+
+        <div class="grid-2" style="gap: var(--space-8);">
+          <div class="value-item" data-reveal data-reveal-delay="0">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Clear, plain language</h3>
+              <p>We write in short sentences, use everyday words, and break content into scannable sections. No jargon walls, no assumptions about reading speed.</p>
+            </div>
+          </div>
+
+          <div class="value-item" data-reveal data-reveal-delay="80">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Consistent, predictable layouts</h3>
+              <p>Navigation stays where you expect it. Buttons look like buttons. Pages follow the same structure. Predictability reduces cognitive load and builds confidence.</p>
+            </div>
+          </div>
+
+          <div class="value-item" data-reveal data-reveal-delay="160">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Sensory-aware design</h3>
+              <p>We respect motion preferences, avoid autoplay, limit visual noise, and ensure sufficient contrast. Users who are sensitive to sensory input can use our platforms comfortably.</p>
+            </div>
+          </div>
+
+          <div class="value-item" data-reveal data-reveal-delay="240">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Flexible interaction</h3>
+              <p>We build platforms that work with keyboard, mouse, touch, and assistive technology. No user should be forced into a single way of interacting with the system.</p>
+            </div>
+          </div>
+
+          <div class="value-item" data-reveal data-reveal-delay="320">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Readable typography</h3>
+              <p>We use accessible fonts, generous line-height, appropriate word-spacing, and capped line lengths. Our typography is designed to reduce reading fatigue for everyone &mdash; especially users with dyslexia.</p>
+            </div>
+          </div>
+
+          <div class="value-item" data-reveal data-reveal-delay="400">
+            <div class="value-icon" style="background: rgba(79, 154, 50, 0.12); color: var(--color-green);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="value-content">
+              <h3>Colour with meaning</h3>
+              <p>We never rely on colour alone to convey information. Every colour-coded element also has text labels, icons, or patterns that communicate the same meaning to users with colour vision differences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats / impact -->
+    <section class="dark-panel section-padding geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <h2>The numbers speak for themselves</h2>
+          <p style="color: rgba(255, 255, 255, 0.75); max-width: 60ch; margin-top: var(--space-4);">Neuroinclusive design is not just the right thing to do &mdash; it makes business sense.</p>
+        </div>
+        <div class="stat-row" data-reveal>
+          <div class="stat-item">
+            <div class="stat-number">15-20%</div>
+            <div class="stat-label">of the UK population is neurodivergent</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">700M+</div>
+            <div class="stat-label">people worldwide live with a neurodivergent condition</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">80%</div>
+            <div class="stat-label">of accessibility barriers also affect non-disabled users</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Building for everyone -->
+    <section class="section-padding bg-page">
+      <div class="container">
+        <div class="grid-5-7">
+          <div data-reveal>
+            <div class="card card-accent-green">
+              <h3 class="card-title" style="font-size: var(--text-lg);">This site practises what we preach</h3>
+              <p class="card-description" style="-webkit-line-clamp: unset; margin-top: var(--space-3);">This website uses the same neuroinclusive principles we apply to every platform we build:</p>
+              <ul style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-secondary);">
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> WCAG AA contrast ratios throughout</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Respects prefers-reduced-motion</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Keyboard-navigable throughout</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Dyslexia-friendly typography</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Clear, consistent navigation</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> No autoplay, no flashing content</li>
+              </ul>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="120">
+            <h2>Inclusion is not an afterthought</h2>
+            <div class="prose" style="margin-top: var(--space-4);">
+              <p>Too many organisations treat accessibility as a compliance checkbox &mdash; something to audit after the build is done. That approach catches surface-level issues but misses the deeper structural decisions that make a platform truly inclusive.</p>
+              <p>We take a different approach. Neuroinclusive thinking is part of how we plan information architecture, design interfaces, write content, and test functionality. It shapes the decisions we make from day one, not the report we produce at the end.</p>
+              <p>The result is platforms that are easier to use for everyone. Clear navigation helps all users. Readable typography reduces fatigue for everyone. Consistent layouts build confidence across the board. Designing for neurodivergent users makes the platform better for all users.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="dark-panel dark-panel-cta section-padding geo-bg geo-bg-dark">
+      <div class="container">
+        <h2 data-reveal>Let's build something inclusive</h2>
+        <p data-reveal>Whether you're starting from scratch or improving an existing platform, we can help you make it work for everyone.</p>
+        <div class="hero-buttons" style="justify-content: center;" data-reveal>
+          <a href="contact.html" class="btn btn-primary-inverse">Talk to us</a>
+          <a href="solutions.html" class="btn btn-secondary-inverse">View our solutions</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo" aria-label="Infobox home">
+            <img src="assets/img/infobox-logo.png" alt="Infobox" width="140" height="36">
+          </a>
+          <p>UK-based technology consultancy. Building platforms that solve real problems for real organisations.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Solutions</div>
+          <div class="footer-links">
+            <a href="solution-detail.html">Claims Management</a>
+            <a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a>
+            <a href="solutions.html">All solutions</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="technology.html">Technology</a>
+            <a href="insights.html">Insights</a>
+            <a href="neuroinclusion.html">Neuroinclusion</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Infobox. All rights reserved.</span>
+        <span>Built on Umbraco, powered by Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
