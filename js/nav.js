@@ -3,11 +3,11 @@
    Hamburger toggle, scroll shadow, active link
    ========================================================================== */
 
-(function () {
-  const header = document.querySelector('.site-header');
-  const toggle = document.querySelector('.nav-toggle');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const mobileLinks = document.querySelectorAll('.mobile-nav a');
+function initNav() {
+  var header = document.querySelector('.site-header');
+  var toggle = document.querySelector('.nav-toggle');
+  var mobileNav = document.querySelector('.mobile-nav');
+  var mobileLinks = document.querySelectorAll('.mobile-nav a');
 
   // Hamburger toggle
   if (toggle && mobileNav) {
@@ -16,7 +16,7 @@
     toggle.setAttribute('aria-label', 'Open navigation menu');
 
     toggle.addEventListener('click', function () {
-      const isOpen = mobileNav.classList.toggle('open');
+      var isOpen = mobileNav.classList.toggle('open');
       toggle.classList.toggle('active');
       toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
@@ -49,7 +49,6 @@
 
   // Scroll shadow on header
   if (header) {
-    var lastScroll = 0;
     window.addEventListener('scroll', function () {
       var scrollY = window.scrollY;
       if (scrollY > 10) {
@@ -57,7 +56,6 @@
       } else {
         header.classList.remove('scrolled');
       }
-      lastScroll = scrollY;
     }, { passive: true });
   }
 
@@ -70,4 +68,18 @@
       link.classList.add('active');
     }
   });
-})();
+
+  // Dropdown toggle
+  var dropdownToggles = document.querySelectorAll('.nav-dropdown-toggle');
+  dropdownToggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+    });
+  });
+}
+
+// Run immediately if DOM already has the header (no includes)
+if (document.querySelector('.site-header')) {
+  initNav();
+}
