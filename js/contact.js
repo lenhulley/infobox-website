@@ -48,13 +48,29 @@
       return;
     }
 
-    // Simulate submission (replace with actual endpoint)
+    // Submit to Formspree
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    setTimeout(function () {
-      showSuccess();
-    }, 800);
+    var data = new FormData(form);
+
+    fetch('https://formspree.io/f/xjgpzoqj', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function (response) {
+      if (response.ok) {
+        showSuccess();
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    }).catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message';
+      alert('Something went wrong. Please try again or email us directly.');
+    });
   });
 
   function showFieldError(field, message) {
