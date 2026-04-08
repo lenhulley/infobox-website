@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing for cognitive load — Infobox Insights</title>
+  <meta name="description" content="Complex portals don't have to feel complex. Here's how we reduce cognitive load in membership portals, claims platforms, and internal tools — without dumbing anything down.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="Infobox home">
+        <img src="assets/img/infobox-logo.png" alt="Infobox" width="160" height="40">
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="neuroinclusion.html" class="nav-link">Neuroinclusion</a></li>
+          <li><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Solutions
+              <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="solution-detail.html">Claims Management</a></li>
+              <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
+              <li><a href="solutions.html">View all solutions</a></li>
+            </ul>
+          </li>
+
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to us</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="neuroinclusion.html">Neuroinclusion</a>
+    <a href="technology.html">Technology</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="insights.html">Insights</a>
+    <a href="contact.html" class="btn btn-primary">Talk to us</a>
+  </nav>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=1400&h=600&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-green">Accessibility</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">8 April 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 9 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Designing for cognitive load: how we approach UI for complex portals</h1>
+              <p class="text-lead">Complex portals don't have to feel complex. Here's how we reduce cognitive load in membership portals, claims platforms, and internal tools &mdash; without dumbing anything down.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>Every portal we build has the same fundamental tension. The business needs the system to handle complex workflows &mdash; claims with multiple stages, memberships with tiered permissions, inspections with branching logic. But the people using the system need it to feel simple. Not simplified. Simple.</p>
+
+              <p>That gap between system complexity and perceived simplicity is where most portals fail. And the reason they fail isn't technical. It's cognitive.</p>
+
+              <h2>What cognitive load actually means</h2>
+
+              <p>Cognitive load is the total amount of mental effort required to use an interface. Every decision a user has to make, every label they have to interpret, every piece of information they have to hold in working memory &mdash; it all adds up.</p>
+
+              <p>Psychologist John Sweller identified three types of cognitive load in the late 1980s, and they map neatly onto portal design:</p>
+
+              <ul>
+                <li><strong>Intrinsic load</strong> is the inherent difficulty of the task. Filing a claim is complicated because claims are complicated. You can't eliminate this.</li>
+                <li><strong>Extraneous load</strong> is the unnecessary difficulty added by poor design. Confusing navigation, inconsistent layouts, ambiguous labels. This is what we can and should eliminate.</li>
+                <li><strong>Germane load</strong> is the productive effort of learning and understanding. Good design maximises this &mdash; it helps users build mental models that make the system easier over time.</li>
+              </ul>
+
+              <p>Most portal redesigns focus on making things look cleaner. That helps. But reducing cognitive load requires thinking about what users have to <em>hold in their heads</em> at any given moment &mdash; and systematically reducing it.</p>
+
+              <h2>Progressive disclosure: show less, not more</h2>
+
+              <p>The single most effective technique we use is progressive disclosure. Show users only what they need at each step. Hide everything else.</p>
+
+              <p>This sounds obvious, but it goes against instinct. Stakeholders want their portal to feel comprehensive. They want to see every feature on the dashboard. They worry that if something isn't visible, users won't find it.</p>
+
+              <p>The opposite is true. When everything is visible, nothing is findable. A dashboard with 30 items is harder to use than one with 5 &mdash; even if the 30-item version technically shows more useful information.</p>
+
+              <p>In practice, progressive disclosure means:</p>
+
+              <ul>
+                <li>Multi-step forms that show one section at a time, with a clear progress indicator</li>
+                <li>Dashboards that surface only active tasks and recent items, with search for everything else</li>
+                <li>Conditional form fields that only appear when relevant</li>
+                <li>Detail panels that expand on demand rather than loading separate pages</li>
+              </ul>
+
+              <p>For a claims portal we built recently, the initial dashboard shows three things: claims that need attention, recent activity, and a button to start a new claim. That's it. The full claims history, reports, and settings are one click away &mdash; but they don't compete for attention on the screen the user sees twenty times a day.</p>
+
+              <h2>Consistent patterns over clever design</h2>
+
+              <p>Every time a user encounters a new pattern, they have to spend mental energy learning how it works. Where does this button go? What does this icon mean? Is this a link or a heading?</p>
+
+              <p>Neurotypical users might process this quickly. Neurodivergent users &mdash; particularly those with ADHD or autism &mdash; may find inconsistency genuinely disorienting. But even for neurotypical users, consistency reduces friction in ways that are measurable.</p>
+
+              <p>Our approach is to define a small set of interaction patterns and use them everywhere:</p>
+
+              <ul>
+                <li>One card style for actionable items. One for informational items.</li>
+                <li>Primary actions always on the right. Secondary actions on the left.</li>
+                <li>Destructive actions always require confirmation and are always red.</li>
+                <li>Status changes always follow the same visual pattern: colour, icon, and label.</li>
+              </ul>
+
+              <p>This means some screens might feel a bit "samey." That's the point. When users learn a pattern once, they can apply it everywhere. The cognitive cost of navigating a new screen drops to near zero.</p>
+
+              <h2>Language as interface</h2>
+
+              <p>The words in a portal aren't decoration. They're load-bearing. A confusing label creates as much friction as a confusing layout &mdash; sometimes more.</p>
+
+              <p>We spend a disproportionate amount of time on microcopy: button labels, form instructions, error messages, empty states. These small pieces of text do an enormous amount of work in reducing cognitive load.</p>
+
+              <p>Some principles we follow:</p>
+
+              <ul>
+                <li><strong>Labels should describe the outcome, not the action.</strong> "Save and continue" is better than "Next." "Download report" is better than "Export."</li>
+                <li><strong>Error messages should say what to do, not what went wrong.</strong> "Enter a valid email address" is better than "Invalid input."</li>
+                <li><strong>Empty states should guide, not just inform.</strong> "No claims yet. Start your first claim to get started" is better than "No results found."</li>
+                <li><strong>Avoid jargon unless the user expects it.</strong> A claims handler knows what "subrogation" means. A member filing a claim does not.</li>
+              </ul>
+
+              <p>We test microcopy with the same rigour we apply to layout. If a user hesitates before clicking a button, the label is probably wrong.</p>
+
+              <h2>Reducing working memory demands</h2>
+
+              <p>Working memory is limited. Most people can hold around four items in working memory at once. Portals that ask users to remember information from a previous screen, compare data across tabs, or mentally track where they are in a multi-step process are exceeding that limit.</p>
+
+              <p>Practical techniques we use to reduce working memory demands:</p>
+
+              <ul>
+                <li><strong>Persistent context.</strong> If a user is working on a claim, show the claim reference and key details in a sticky header. Don't make them remember it.</li>
+                <li><strong>Inline validation.</strong> Don't wait until form submission to flag errors. Validate as the user types, so they can correct mistakes immediately rather than holding a mental list of what to fix.</li>
+                <li><strong>Smart defaults.</strong> Pre-fill fields where you can. If the user's address is on file, don't ask them to type it again. If most claims are a certain type, pre-select it.</li>
+                <li><strong>Visual progress.</strong> Show users where they are in a multi-step process, what they've completed, and what's left. A simple progress bar or step indicator eliminates the mental overhead of tracking progress internally.</li>
+              </ul>
+
+              <h2>The neuroinclusion connection</h2>
+
+              <p>Everything described above benefits all users. But for neurodivergent users, these aren't nice-to-haves &mdash; they're the difference between being able to use the system and not.</p>
+
+              <p>A user with ADHD who opens a cluttered dashboard might not just find it annoying. They might lose 20 minutes context-switching between items before focusing on the task they came to do. A user with dyslexia who encounters a dense error message might not just find it confusing. They might abandon the process entirely.</p>
+
+              <p>This is why we think about cognitive load as an accessibility concern, not just a UX preference. Reducing extraneous cognitive load is neuroinclusive design in practice. It's not about adding special accommodations. It's about removing unnecessary barriers that shouldn't have been there in the first place.</p>
+
+              <blockquote>
+                The best portal interfaces don't feel like they were designed for neurodivergent users specifically. They feel like they were designed properly. That's the point.
+              </blockquote>
+
+              <h2>How we measure it</h2>
+
+              <p>Cognitive load is hard to measure directly. But there are reliable proxies:</p>
+
+              <ul>
+                <li><strong>Time to first action.</strong> How long does it take a new user to complete their first meaningful task? If it's more than two minutes, there's too much friction.</li>
+                <li><strong>Error rate on forms.</strong> High error rates usually mean the form is asking users to hold too much in their heads, not that users are careless.</li>
+                <li><strong>Support ticket themes.</strong> If users are contacting support to ask "where is X?" the navigation has failed. If they're asking "what does X mean?" the language has failed.</li>
+                <li><strong>Session recordings.</strong> Watch how users navigate. Hesitation, back-tracking, and repeated scrolling all indicate cognitive overload.</li>
+              </ul>
+
+              <p>We review these signals at regular intervals throughout a project, not just at launch. Cognitive load problems often emerge only when real users encounter real complexity &mdash; not in prototype testing with sample data.</p>
+
+              <h2>The trade-off we refuse to make</h2>
+
+              <p>Some portal projects treat simplicity and capability as a trade-off. You can have a simple interface or a powerful one, but not both.</p>
+
+              <p>We don't accept that framing. The job is to make complex things feel simple. That's harder than building a complex interface. It requires more design iteration, more user testing, and more willingness to throw away work that looks good but doesn't perform well.</p>
+
+              <p>But the result is a portal that people actually use &mdash; not because they have to, but because it doesn't punish them for trying.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=600&h=340&q=80" alt="Diverse group of people collaborating in a bright workspace" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Accessibility</span>
+                <span class="post-card-date">31 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-neuroinclusion.html">What neuroinclusivity means in the digital world</a></h3>
+              <p class="post-card-excerpt">Around 1 in 7 people are neurodivergent. Most digital platforms aren't built with them in mind.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&h=340&q=80" alt="Abstract view of global data networks" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">AI</span>
+                <span class="post-card-date">24 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">The honest cost of AI-assisted development</a></h3>
+              <p class="post-card-excerpt">What actually changed in cost, quality, and client relationships after 18 months.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="160">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&h=340&q=80" alt="Code on a dark screen with warm lighting" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-silver">Architecture</span>
+                <span class="post-card-date">28 February 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">Connecting Umbraco to Dynamics 365</a></h3>
+              <p class="post-card-excerpt">Integration patterns that survive real-world load and complexity.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="site-logo" aria-label="Infobox home">
+            <img src="assets/img/infobox-logo.png" alt="Infobox" width="140" height="36">
+          </a>
+          <p>UK-based technology consultancy. Building platforms that solve real problems for real organisations.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Solutions</div>
+          <div class="footer-links">
+            <a href="solution-detail.html">Claims Management</a>
+            <a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a>
+            <a href="solutions.html">All solutions</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="about.html">About us</a>
+            <a href="technology.html">Technology</a>
+            <a href="insights.html">Insights</a>
+            <a href="neuroinclusion.html">Neuroinclusion</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Infobox. All rights reserved.</span>
+        <span>Built on Umbraco, powered by Microsoft.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
