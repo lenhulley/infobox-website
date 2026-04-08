@@ -354,7 +354,7 @@
 .btn-secondary-inverse {
   background-color: transparent;
   color: var(--color-text-inverse);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.55);
 }
 
 .btn-secondary-inverse:hover {
@@ -571,7 +571,7 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: #767676;
+  color: #6B6B6B;
 }
 
 .form-textarea {
