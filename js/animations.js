@@ -5,7 +5,8 @@
 
 (function () {
   // Check for reduced motion preference
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    || document.documentElement.classList.contains('a11y-reduced-motion');
 
   /* ========================================================================
      Hero staggered fade-up

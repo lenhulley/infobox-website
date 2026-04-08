@@ -8,7 +8,7 @@ document.write(`<a href="#main" class="skip-link">Skip to main content</a>
     <nav class="site-nav" aria-label="Main navigation">
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link">Home</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="about.html" class="nav-link">About us</a></li>
         <li><a href="neuroinclusion.html" class="nav-link">Neuroinclusion</a></li>
         <li><a href="technology.html" class="nav-link">Technology</a></li>
         <li class="nav-dropdown">

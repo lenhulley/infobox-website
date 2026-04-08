@@ -1,0 +1,705 @@
+/* ==========================================================================
+   Infobox — Accessibility Controls
+   Dark mode, reduced contrast, dyslexia font, spacing, reading guide, panel
+   ========================================================================== */
+
+/* ==========================================================================
+   OpenDyslexic font-face (only downloaded when .a11y-dyslexia-font is active)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/opendyslexic-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/opendyslexic-bold.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   Font size levels (html font-size scales all rem values)
+   ========================================================================== */
+
+html.a11y-font-size-1 { font-size: 87.5%; }
+html.a11y-font-size-2 { font-size: 93.75%; }
+/* level 3 = default 100%, no class needed */
+html.a11y-font-size-4 { font-size: 112.5%; }
+html.a11y-font-size-5 { font-size: 125%; }
+
+/* ==========================================================================
+   Dark mode
+   ========================================================================== */
+
+html.a11y-dark {
+  --color-text-primary:    #E8E8E6;
+  --color-text-secondary:  #A0A0A0;
+  --color-text-inverse:    #1A1F2E;
+  --color-bg-page:         #121218;
+  --color-bg-card:         #1C1C24;
+  --color-bg-dark:         #0A0A0F;
+  --color-off-white:       #1C1C24;
+  --color-white:           #1C1C24;
+  --color-charcoal:        #E8E8E6;
+  --color-silver:          #A0A0A0;
+  --color-dark-panel:      #0A0A0F;
+
+  /* Brand colours — lighter variants for dark backgrounds */
+  --color-blue:            #4A9FE5;
+  --color-green:           #6BC84A;
+  --color-red:             #E8666B;
+  --color-action:          #4A9FE5;
+  --color-action-hover:    #6BB3F0;
+  --color-success:         #6BC84A;
+  --color-alert:           #E8666B;
+
+  --border-subtle:  1px solid rgba(255, 255, 255, 0.08);
+  --border-strong:  1px solid rgba(255, 255, 255, 0.18);
+  --border-accent:  2px solid #4A9FE5;
+
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.30);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.40);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark mode — preserve already-dark sections (hero, dark panels, footer) */
+html.a11y-dark .hero,
+html.a11y-dark .dark-panel,
+html.a11y-dark .site-footer {
+  --color-text-inverse: #FFFFFF;
+}
+
+html.a11y-dark .hero h1,
+html.a11y-dark .dark-panel h2 {
+  color: #FFFFFF;
+}
+
+html.a11y-dark .hero .text-lead,
+html.a11y-dark .dark-panel p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Dark mode — inverse buttons (inside hero/dark panels) keep white text */
+html.a11y-dark .btn-primary-inverse {
+  background-color: #4A9FE5;
+  color: #FFFFFF;
+}
+
+html.a11y-dark .btn-primary-inverse:hover {
+  background-color: #6BB3F0;
+  color: #FFFFFF;
+}
+
+html.a11y-dark .btn-secondary-inverse {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+html.a11y-dark .btn-secondary-inverse:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+/* Dark mode targeted overrides for hardcoded colours */
+html.a11y-dark .site-header {
+  background-color: #121218;
+}
+
+html.a11y-dark .site-header.scrolled {
+  background-color: rgba(18, 18, 24, 0.95);
+}
+
+html.a11y-dark .nav-toggle span {
+  background-color: var(--color-text-primary);
+}
+
+html.a11y-dark .mobile-nav {
+  background-color: #121218;
+}
+
+html.a11y-dark .white-section {
+  background-color: #1C1C24;
+}
+
+html.a11y-dark .bg-page {
+  background-color: #121218;
+}
+
+html.a11y-dark .card {
+  background-color: #1C1C24;
+}
+
+html.a11y-dark .form-input,
+html.a11y-dark .form-select,
+html.a11y-dark .form-textarea {
+  background-color: #16161C;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-primary);
+}
+
+html.a11y-dark .form-input::placeholder,
+html.a11y-dark .form-textarea::placeholder {
+  color: #707070;
+}
+
+html.a11y-dark .logo-strip img {
+  filter: grayscale(100%) invert(1);
+}
+
+html.a11y-dark .site-logo img {
+  filter: brightness(0) invert(1);
+}
+
+html.a11y-dark .footer-brand .site-logo img {
+  filter: brightness(0) invert(1);
+}
+
+html.a11y-dark .tag-blue {
+  background-color: rgba(74, 159, 229, 0.15);
+  color: #4A9FE5;
+}
+
+html.a11y-dark .tag-green {
+  background-color: rgba(79, 154, 50, 0.15);
+  color: #6BC84A;
+}
+
+html.a11y-dark .tag-red {
+  background-color: rgba(204, 34, 41, 0.15);
+  color: #E8666B;
+}
+
+html.a11y-dark .tag-silver {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #A0A0A0;
+}
+
+html.a11y-dark .logo-section {
+  background-color: #1C1C24;
+}
+
+html.a11y-dark .post-card {
+  background-color: #1C1C24;
+}
+
+html.a11y-dark .post-card-image {
+  opacity: 0.85;
+}
+
+/* Card icons — lighter rgba for dark backgrounds */
+html.a11y-dark .card-icon-blue   { background: rgba(74, 159, 229, 0.15); }
+html.a11y-dark .card-icon-green  { background: rgba(107, 200, 74, 0.15); }
+html.a11y-dark .card-icon-red    { background: rgba(232, 102, 107, 0.15); }
+html.a11y-dark .card-icon-silver { background: rgba(160, 160, 160, 0.15); }
+
+/* Value prop icons use same classes */
+html.a11y-dark .value-icon { color: inherit; }
+
+/* Proof card */
+html.a11y-dark .proof-card {
+  background-color: #1C1C24;
+  border-left-color: #4A9FE5;
+}
+
+html.a11y-dark .proof-card p {
+  color: var(--color-text-secondary);
+}
+
+/* Post featured card */
+html.a11y-dark .post-featured {
+  border-left-color: #4A9FE5;
+}
+
+/* Sidebar */
+html.a11y-dark .sidebar-newsletter {
+  background-color: #16161C;
+}
+
+/* Card accent borders */
+html.a11y-dark .card-accent-green {
+  border-left-color: #6BC84A;
+}
+
+html.a11y-dark .card-accent-blue {
+  border-left-color: #4A9FE5;
+}
+
+/* Form focus ring */
+html.a11y-dark .form-input:focus,
+html.a11y-dark .form-select:focus,
+html.a11y-dark .form-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(74, 159, 229, 0.25);
+}
+
+/* Links */
+html.a11y-dark a {
+  color: var(--color-action);
+}
+
+html.a11y-dark a:hover {
+  color: var(--color-action-hover);
+}
+
+/* Prose text in dark mode */
+html.a11y-dark .prose {
+  color: var(--color-text-secondary);
+}
+
+html.a11y-dark .btn-primary {
+  background-color: #4A9FE5;
+  color: #0A0A0F;
+}
+
+html.a11y-dark .btn-primary:hover {
+  background-color: #6BB3F0;
+}
+
+html.a11y-dark .btn-secondary {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-text-primary);
+}
+
+html.a11y-dark .btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   Reduced contrast
+   ========================================================================== */
+
+html.a11y-low-contrast {
+  --color-text-primary:    #4A4A4A;
+  --color-text-secondary:  #787878;
+  --color-text-inverse:    #F0F0EE;
+  --color-bg-page:         #F0EDE8;
+  --color-bg-card:         #FAF8F5;
+  --color-bg-dark:         #2D3040;
+  --color-action:          #5088B8;
+  --color-action-hover:    #4478A6;
+  --color-alert:           #C95560;
+  --color-success:         #6BA85A;
+  --color-red:             #C95560;
+  --color-blue:            #5088B8;
+  --color-green:           #6BA85A;
+
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg:  0 8px 32px rgba(0, 0, 0, 0.07);
+}
+
+/* Combined dark + reduced contrast */
+html.a11y-dark.a11y-low-contrast {
+  --color-text-primary:    #C0C0BE;
+  --color-text-secondary:  #8A8A8A;
+  --color-bg-page:         #18181E;
+  --color-bg-card:         #222230;
+  --color-bg-dark:         #101016;
+  --color-action:          #6AADE0;
+  --color-action-hover:    #88C0EC;
+  --color-charcoal:        #C0C0BE;
+  --color-silver:          #8A8A8A;
+}
+
+html.a11y-dark.a11y-low-contrast .site-header {
+  background-color: #18181E;
+}
+
+html.a11y-dark.a11y-low-contrast .site-header.scrolled {
+  background-color: rgba(24, 24, 30, 0.95);
+}
+
+html.a11y-dark.a11y-low-contrast .white-section {
+  background-color: #222230;
+}
+
+html.a11y-dark.a11y-low-contrast .card {
+  background-color: #222230;
+}
+
+/* ==========================================================================
+   Dyslexia-friendly font
+   ========================================================================== */
+
+html.a11y-dyslexia-font {
+  --font-display: 'OpenDyslexic', sans-serif;
+  --font-body:    'OpenDyslexic', sans-serif;
+}
+
+/* ==========================================================================
+   Increased spacing
+   ========================================================================== */
+
+html.a11y-wide-spacing {
+  letter-spacing: 0.08em;
+  word-spacing: 0.16em;
+}
+
+html.a11y-wide-spacing h1,
+html.a11y-wide-spacing h2,
+html.a11y-wide-spacing h3 {
+  letter-spacing: 0;
+}
+
+html.a11y-wide-spacing p,
+html.a11y-wide-spacing li,
+html.a11y-wide-spacing td {
+  word-spacing: 0.16em;
+}
+
+/* ==========================================================================
+   Reduced motion (manual override)
+   ========================================================================== */
+
+html.a11y-reduced-motion *,
+html.a11y-reduced-motion *::before,
+html.a11y-reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ==========================================================================
+   Reading guide
+   ========================================================================== */
+
+.a11y-reading-shade {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity 150ms ease;
+  opacity: 0;
+}
+
+html.a11y-reading-guide .a11y-reading-shade {
+  opacity: 1;
+}
+
+html:not(.a11y-reading-guide) .a11y-reading-shade {
+  display: none;
+}
+
+html.a11y-dark .a11y-reading-shade {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================================================================
+   Accessibility trigger button
+   ========================================================================== */
+
+.a11y-trigger {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-action);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.a11y-trigger:hover {
+  background-color: var(--color-action-hover);
+  transform: scale(1.05);
+}
+
+.a11y-trigger:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+.a11y-trigger svg {
+  width: 24px;
+  height: 24px;
+}
+
+html.a11y-dark .a11y-trigger {
+  background-color: #4A9FE5;
+  color: #0A0A0F;
+}
+
+html.a11y-dark .a11y-trigger:hover {
+  background-color: #6BB3F0;
+}
+
+/* ==========================================================================
+   Accessibility panel
+   ========================================================================== */
+
+.a11y-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-xl);
+  z-index: 10000;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+  overflow-y: auto;
+  font-family: var(--font-body);
+}
+
+.a11y-panel.open {
+  transform: translateX(0);
+}
+
+html.a11y-reduced-motion .a11y-panel {
+  transition: none !important;
+}
+
+@media (max-width: 400px) {
+  .a11y-panel {
+    width: 100%;
+  }
+}
+
+.a11y-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6);
+  border-bottom: var(--border-subtle);
+}
+
+.a11y-panel-header h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.a11y-panel-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: background-color 150ms ease;
+}
+
+.a11y-panel-close:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+html.a11y-dark .a11y-panel-close:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.a11y-panel-close:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+.a11y-panel-body {
+  padding: var(--space-4) var(--space-6) var(--space-8);
+}
+
+/* Control group */
+.a11y-control-group {
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-subtle);
+}
+
+.a11y-control-group:last-child {
+  border-bottom: none;
+}
+
+.a11y-control-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+/* Font size controls */
+.a11y-fontsize-controls {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.a11y-fontsize-controls button {
+  flex: 1;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: transparent;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  transition: background-color 150ms ease;
+}
+
+.a11y-fontsize-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.a11y-fontsize-controls button.active {
+  background-color: var(--color-action);
+  color: #FFFFFF;
+  border-color: var(--color-action);
+}
+
+html.a11y-dark .a11y-fontsize-controls button {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+html.a11y-dark .a11y-fontsize-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+html.a11y-dark .a11y-fontsize-controls button.active {
+  background-color: #4A9FE5;
+  color: #0A0A0F;
+  border-color: #4A9FE5;
+}
+
+.a11y-fontsize-controls button:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+.a11y-fontsize-controls button[data-a11y-fontsize="1"] { font-size: 11px; }
+.a11y-fontsize-controls button[data-a11y-fontsize="2"] { font-size: 13px; }
+.a11y-fontsize-controls button[data-a11y-fontsize="3"] { font-size: 15px; }
+.a11y-fontsize-controls button[data-a11y-fontsize="4"] { font-size: 17px; }
+.a11y-fontsize-controls button[data-a11y-fontsize="5"] { font-size: 19px; }
+
+/* Toggle switch buttons */
+.a11y-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  transition: background-color 150ms ease;
+  text-align: left;
+}
+
+.a11y-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+html.a11y-dark .a11y-toggle {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+html.a11y-dark .a11y-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.a11y-toggle:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+.a11y-toggle svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.a11y-toggle-indicator {
+  margin-left: auto;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.15);
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 150ms ease;
+}
+
+.a11y-toggle-indicator::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  transition: transform 150ms ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.a11y-toggle[aria-checked="true"] .a11y-toggle-indicator {
+  background-color: var(--color-action);
+}
+
+.a11y-toggle[aria-checked="true"] .a11y-toggle-indicator::after {
+  transform: translateX(16px);
+}
+
+html.a11y-dark .a11y-toggle-indicator {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+html.a11y-dark .a11y-toggle[aria-checked="true"] .a11y-toggle-indicator {
+  background-color: #4A9FE5;
+}
+
+/* Reset button */
+.a11y-reset {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  margin-top: var(--space-2);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-align: center;
+  border-radius: var(--radius-md);
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.a11y-reset:hover {
+  color: var(--color-alert);
+  background-color: rgba(204, 34, 41, 0.06);
+}
+
+.a11y-reset:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}

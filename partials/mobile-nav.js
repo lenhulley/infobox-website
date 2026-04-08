@@ -1,6 +1,6 @@
 document.write(`<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
   <a href="index.html">Home</a>
-  <a href="about.html">About</a>
+  <a href="about.html">About us</a>
   <a href="neuroinclusion.html">Neuroinclusion</a>
   <a href="technology.html">Technology</a>
   <a href="solutions.html">Solutions</a>
