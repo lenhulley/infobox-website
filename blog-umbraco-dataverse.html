@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umbraco and Dataverse portals: the Power Pages alternative — Infobox Insights</title>
+  <meta name="description" content="Why we build authenticated portals on Umbraco connected to Dataverse instead of using Power Pages — and where Power Pages still makes sense.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <script src="partials/header.js"></script>
+
+  <script src="partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&h=600&q=80" alt="Dashboard analytics displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="tag tag-blue">Power Platform</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">14 April 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 8 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Umbraco and Dataverse portals: the Power Pages alternative</h1>
+              <p class="text-lead">Why we build authenticated portals on Umbraco connected to Dataverse instead of using Power Pages — and where Power Pages still makes sense.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>If your organisation uses Dynamics 365 or Dataverse and needs an external-facing portal — a member area, a customer dashboard, a supplier submission form — Microsoft's official answer is Power Pages (formerly Power Apps Portals, formerly Dynamics Portals).</p>
+
+              <p>Power Pages is a capable product. It connects directly to Dataverse, supports table permissions, and can be configured without writing code. For simple use cases, it works well.</p>
+
+              <p>But for anything beyond simple use cases, it becomes a source of friction. And that friction is why we build most of our portals on Umbraco instead.</p>
+
+              <h2>Where Power Pages becomes frustrating</h2>
+
+              <p><strong>Design control.</strong> Power Pages provides templates and a visual editor, but achieving a specific brand identity requires fighting the framework. Custom CSS is layered on top of generated markup, and the HTML structure is opaque and changes between updates. For organisations that care about their digital brand — and they should — this is a significant constraint.</p>
+
+              <p><strong>Per-user licensing.</strong> Power Pages charges per authenticated user per month. For a portal with hundreds or thousands of members, the licensing cost grows linearly. This is often the single largest objection we hear from organisations evaluating Power Pages for membership portals.</p>
+
+              <p><strong>Developer experience.</strong> Power Pages uses Liquid templates for server-side logic, a choice inherited from Dynamics Portals. Liquid is limited compared to Razor, difficult to debug, and poorly documented for the Dataverse-specific extensions. Developers who are fluent in C# and .NET find themselves working in an unfamiliar and constrained environment.</p>
+
+              <p><strong>Deployment and ALM.</strong> Moving Power Pages configuration between environments is brittle. The portal metadata is stored in Dataverse tables, which means solution transport sometimes works and sometimes doesn't. Compare this to an Umbraco site where deployment is a standard CI/CD pipeline.</p>
+
+              <h2>The Umbraco alternative</h2>
+
+              <p>Our approach is to use Umbraco as the portal frontend and connect it to Dataverse via the Web API. Umbraco handles content management, authentication, rendering, and the editorial experience. Dataverse remains the system of record for business data.</p>
+
+              <p>This architecture gives us several advantages:</p>
+
+              <p><strong>Full design control.</strong> Umbraco renders standard HTML via Razor views. The markup is yours. The CSS is yours. The responsive behaviour, the accessibility implementation, the animation — all of it is under your control in a way that Power Pages can't match.</p>
+
+              <p><strong>No per-user licensing.</strong> Umbraco is open source. The hosting cost is a fixed Azure App Service plan, regardless of how many authenticated users access the portal. For membership organisations with thousands of members, this changes the economics entirely.</p>
+
+              <p><strong>Standard .NET development.</strong> Portal logic is written in C# with full access to the .NET ecosystem. Dependency injection, middleware, logging, testing — all the tools a .NET developer expects are available. There's no Liquid, no proprietary template language, no magic configuration tables.</p>
+
+              <p><strong>Content management included.</strong> Umbraco is a CMS first. The editorial team gets a familiar backoffice for managing page content, news, resources, and downloads. Power Pages has limited content management capabilities — it's built for data-driven forms, not editorial content.</p>
+
+              <h2>How the Dataverse connection works</h2>
+
+              <p>The integration layer is a service class that authenticates against Dataverse using an Entra ID app registration (client credentials flow) and calls the Dataverse Web API. CRUD operations are wrapped in typed service methods that the Umbraco controllers call.</p>
+
+              <p>For read-heavy pages — dashboards, directory listings, status views — we cache aggressively and use OData filters to minimise the data transferred. For write operations — form submissions, profile updates — we call Dataverse synchronously and handle errors gracefully.</p>
+
+              <p>The pattern is straightforward, well-tested, and uses standard HTTP. There's no custom connector, no proprietary SDK dependency, and no platform lock-in beyond the Dataverse API itself.</p>
+
+              <blockquote>
+                The best portal architecture puts the CMS in charge of the experience and the CRM in charge of the data. Trying to make the CRM do both is where most portal projects go wrong.
+              </blockquote>
+
+              <h2>When Power Pages is the right choice</h2>
+
+              <p>We're not ideologically opposed to Power Pages. There are genuine use cases where it's the better option:</p>
+
+              <ul>
+                <li><strong>Simple data capture forms</strong> where design control isn't a priority and the portal is purely functional.</li>
+                <li><strong>Rapid prototyping</strong> where you need a working portal in days, not weeks, and you'll rebuild it later.</li>
+                <li><strong>Organisations with no .NET capability</strong> where the alternative to Power Pages isn't Umbraco but a full custom build from scratch.</li>
+                <li><strong>Low user counts</strong> where the per-user licensing cost is negligible.</li>
+              </ul>
+
+              <p>For everything else — membership portals, customer dashboards, supplier submission systems, any portal where brand identity matters — Umbraco connected to Dataverse is a more capable, more maintainable, and more cost-effective architecture.</p>
+
+              <h2>The bigger picture</h2>
+
+              <p>The Umbraco-Dataverse portal pattern is part of a broader approach we take to Microsoft technology: use the right tool for each layer. Dataverse for business data and logic. Umbraco for content and experience. Azure for infrastructure and integration. .NET for everything that ties them together.</p>
+
+              <p>Power Pages tries to be all of these things in one product. For simple scenarios, that's convenient. For real-world portals with real design requirements, it's a constraint that costs more than it saves.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">.NET</span>
+                <span class="post-card-date">21 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-blazor.html">Choosing Blazor over React: a .NET team's perspective</a></h3>
+              <p class="post-card-excerpt">Why we chose Blazor WASM and where the trade-offs land for a .NET-native team.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&h=340&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Accessibility</span>
+                <span class="post-card-date">8 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-cognitive-load.html">Designing for cognitive load in complex portals</a></h3>
+              <p class="post-card-excerpt">How we reduce cognitive load in membership portals, claims platforms, and internal tools.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="partials/accessibility.js"></script>
+  <script src="partials/footer.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

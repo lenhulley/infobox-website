@@ -37,26 +37,26 @@
     <!-- Content area -->
     <section class="section bg-page">
       <div class="container">
-        <div class="grid grid-12">
+        <div>
 
-          <!-- Main column -->
-          <div class="col-span-12 lg:col-span-8">
+          <div>
 
             <!-- Featured post -->
             <article class="post-card post-featured" style="margin-bottom: var(--space-8);" data-reveal>
               <div class="post-card-image" style="overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=960&h=540&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=960&h=540&q=80" alt="Conference hall with rows of seats and stage lighting" style="width: 100%; height: 100%; object-fit: cover;">
               </div>
               <div class="post-card-body">
                 <div class="post-card-meta">
+                  <span class="tag tag-green">Events</span>
                   <span class="tag tag-green">Accessibility</span>
-                  <span class="post-card-date">8 April 2026</span>
+                  <span class="post-card-date">28 April 2026</span>
                 </div>
                 <h2 class="post-card-title">
-                  <a href="blog-cognitive-load.html">Designing for cognitive load: how we approach UI for complex portals</a>
+                  <a href="blog-sensory-metadata.html">Why your event app should know how loud the room will be</a>
                 </h2>
-                <p class="post-card-excerpt">Complex portals don't have to feel complex. Here's how we reduce cognitive load in membership portals, claims platforms, and internal tools &mdash; without dumbing anything down.</p>
-                <a href="blog-cognitive-load.html" class="card-link" style="margin-top: var(--space-4);">
+                <p class="post-card-excerpt">Sensory metadata &mdash; noise levels, lighting conditions, crowd density &mdash; is the missing layer in event management platforms. Here's why it matters and how we approach it.</p>
+                <a href="blog-sensory-metadata.html" class="card-link" style="margin-top: var(--space-4);">
                   Read more
                   <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -64,7 +64,56 @@
             </article>
 
             <!-- Post grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2" style="gap: var(--space-6);">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style="gap: var(--space-6);">
+
+              <article class="post-card" data-reveal data-reveal-delay="0">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-blue">.NET</span>
+                    <span class="post-card-date">21 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-blazor.html">Choosing Blazor over React: a .NET team's perspective</a>
+                  </h3>
+                  <p class="post-card-excerpt">Why we chose Blazor WebAssembly over React for our event platform, and where the trade-offs land for a .NET-native team.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="80">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-blue">Umbraco</span>
+                    <span class="tag tag-blue">Power Platform</span>
+                    <span class="post-card-date">14 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-umbraco-dataverse.html">Umbraco and Dataverse portals: the Power Pages alternative</a>
+                  </h3>
+                  <p class="post-card-excerpt">Why we build authenticated portals on Umbraco connected to Dataverse instead of using Power Pages.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="160">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&h=340&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-green">Accessibility</span>
+                    <span class="post-card-date">8 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-cognitive-load.html">Designing for cognitive load in complex portals</a>
+                  </h3>
+                  <p class="post-card-excerpt">Complex portals don't have to feel complex. Here's how we reduce cognitive load in membership portals, claims platforms, and internal tools.</p>
+                </div>
+              </article>
 
               <article class="post-card" data-reveal data-reveal-delay="0">
                 <div class="post-card-image" style="overflow: hidden;">
@@ -78,7 +127,7 @@
                   <h3 class="post-card-title">
                     <a href="blog-neuroinclusion.html">What neuroinclusivity means in the digital world</a>
                   </h3>
-                  <p class="post-card-excerpt">Around 1 in 7 people are neurodivergent. Most digital platforms aren't built with them in mind. Here's what neuroinclusive design actually looks like.</p>
+                  <p class="post-card-excerpt">Around 1 in 7 people are neurodivergent. Most digital platforms aren't built with them in mind.</p>
                 </div>
               </article>
 
@@ -98,92 +147,9 @@
                 </div>
               </article>
 
-              <article class="post-card" data-reveal data-reveal-delay="80">
-                <div class="post-card-image" style="overflow: hidden;">
-                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics on laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="post-card-body">
-                  <div class="post-card-meta">
-                    <span class="tag tag-blue">Umbraco</span>
-                    <span class="post-card-date">18 March 2026</span>
-                  </div>
-                  <h3 class="post-card-title">
-                    <a href="blog-post.html">Umbraco 17: what's new and why it matters for content teams</a>
-                  </h3>
-                  <p class="post-card-excerpt">The latest Umbraco release brings a rebuilt backoffice, improved content workflows, and better headless support. Here's our take on what it means for existing projects.</p>
-                </div>
-              </article>
-
-              <article class="post-card" data-reveal data-reveal-delay="80">
-                <div class="post-card-image" style="overflow: hidden;">
-                  <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&h=340&q=80" alt="Tall trees in a misty forest" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="post-card-body">
-                  <div class="post-card-meta">
-                    <span class="tag tag-green">Field Service</span>
-                    <span class="post-card-date">10 March 2026</span>
-                  </div>
-                  <h3 class="post-card-title">
-                    <a href="blog-post.html">Building offline-first mobile apps with .NET MAUI: lessons from the field</a>
-                  </h3>
-                  <p class="post-card-excerpt">When your users work in forests and tunnels, connectivity isn't guaranteed. Here's how we architect offline-first experiences that sync reliably when signal returns.</p>
-                </div>
-              </article>
-
-              <article class="post-card" data-reveal data-reveal-delay="0">
-                <div class="post-card-image" style="overflow: hidden;">
-                  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&h=340&q=80" alt="Code on a dark screen with warm lighting" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="post-card-body">
-                  <div class="post-card-meta">
-                    <span class="tag tag-silver">Architecture</span>
-                    <span class="post-card-date">28 February 2026</span>
-                  </div>
-                  <h3 class="post-card-title">
-                    <a href="blog-post.html">Connecting Umbraco to Dynamics 365: integration patterns that actually work</a>
-                  </h3>
-                  <p class="post-card-excerpt">We've tried several approaches to bridging CMS and CRM. Here are the patterns that survive real-world load, editorial workflows, and data sync complexity.</p>
-                </div>
-              </article>
-
-              <article class="post-card" data-reveal data-reveal-delay="80">
-                <div class="post-card-image" style="overflow: hidden;">
-                  <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=600&h=340&q=80" alt="Person working on a laptop" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div class="post-card-body">
-                  <div class="post-card-meta">
-                    <span class="tag tag-blue">Azure</span>
-                    <span class="post-card-date">15 February 2026</span>
-                  </div>
-                  <h3 class="post-card-title">
-                    <a href="blog-post.html">Infrastructure as code for Umbraco: Azure Bicep templates we actually use</a>
-                  </h3>
-                  <p class="post-card-excerpt">Reproducible, auditable infrastructure for .NET web applications. We share our Bicep templates and explain the decisions behind them.</p>
-                </div>
-              </article>
-
             </div>
           </div>
 
-          <!-- Sidebar -->
-          <div class="col-span-12 lg:col-span-4" style="padding-left: 0;">
-            <aside class="sidebar" style="position: sticky; top: 96px;">
-
-              <div class="sidebar-section" data-reveal>
-                <h3>Categories</h3>
-                <div class="sidebar-links">
-                  <a href="#" class="sidebar-link">Accessibility</a>
-                  <a href="#" class="sidebar-link">AI &amp; Automation</a>
-                  <a href="#" class="sidebar-link">Umbraco</a>
-                  <a href="#" class="sidebar-link">Dynamics 365</a>
-                  <a href="#" class="sidebar-link">Azure</a>
-                  <a href="#" class="sidebar-link">Architecture</a>
-                </div>
-              </div>
-
-
-            </aside>
-          </div>
 
         </div>
       </div>

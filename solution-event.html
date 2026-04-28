@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management Platform — Infobox</title>
+  <meta name="description" content="Neuroinclusive event management platform — attendee registration, agenda with sensory metadata, exhibitor directories, and lead capture. Built on .NET 10 and Blazor.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <script src="partials/header.js"></script>
+
+  <script src="partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero hero-medium geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag tag-green" data-hero-animate>Event Management</span>
+          <h1 data-hero-animate>Event platforms built for how attendees actually think</h1>
+          <p class="text-lead" data-hero-animate>A neuroinclusive event management platform — attendee registration, sensory-aware agendas, exhibitor directories, and lead capture. Built as a progressive web app on .NET 10.</p>
+          <div class="hero-buttons" data-hero-animate>
+            <a href="contact.html" class="btn btn-primary-inverse">Talk to us about this</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="grid grid-7-5" style="align-items: start;">
+          <div data-reveal>
+            <div class="section-header">
+              <span class="tag tag-red">The challenge</span>
+              <h2>Event apps that ignore how people actually experience events</h2>
+            </div>
+            <div class="prose">
+              <p>Most event management platforms treat attendees as a single type of user. But conference and exhibition attendees have diverse sensory needs, different levels of comfort in crowded spaces, and varying abilities to process dense agendas and wayfinding information.</p>
+              <p>For neurodivergent attendees — around 1 in 7 people — a standard event app can be a barrier rather than a help. Cluttered interfaces, unclear navigation, autoplay content, and no way to plan around sensory environments make the experience harder than it needs to be.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="100">
+            <div class="card card-accent-green" style="margin-top: var(--space-4);">
+              <h3 class="card-title" style="font-size: var(--text-lg);">What attendees need from an event app</h3>
+              <ul style="margin-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--text-sm); color: var(--color-text-secondary);">
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Know what to expect from each session before they arrive</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Filter sessions by sensory environment, not just topic</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Build a personal schedule they can rely on</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Find exhibitors without navigating a chaotic floorplan</li>
+                <li style="padding-left: var(--space-4); position: relative;"><span style="position: absolute; left: 0; color: var(--color-green);">&#10003;</span> Control their own accessibility preferences</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">How it works</span>
+          <h2>A platform designed around the attendee experience</h2>
+          <p class="text-lead">Every feature is built with sensory awareness and cognitive load in mind — not as an afterthought, but as the foundation.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Sensory-aware agenda</h3>
+            <p class="card-description">Every session includes metadata on expected noise level, lighting conditions, crowd density, and content intensity. Attendees can filter sessions by sensory environment.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">Personal schedule</h3>
+            <p class="card-description">Attendees bookmark sessions and build a personal agenda. The schedule view is clean and predictable, with clear time blocks and no visual clutter.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Exhibitor directory</h3>
+            <p class="card-description">A searchable, filterable directory of exhibitors organised by category and sponsor tier. Exhibitor profiles include booth location, company description, and contact information.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="0">
+            <h3 class="card-title">Attendee profiles</h3>
+            <p class="card-description">Attendees set communication preferences, networking status, and accessibility needs. The platform respects these preferences throughout the experience.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="80">
+            <h3 class="card-title">Accessibility preferences</h3>
+            <p class="card-description">Client-side preferences for theme, font scale, reduced motion, dyslexia-friendly font, and notification frequency — all stored locally and applied instantly.</p>
+          </div>
+          <div class="card card-accent" data-reveal data-reveal-delay="160">
+            <h3 class="card-title">Offline-capable PWA</h3>
+            <p class="card-description">Installs on any device as a progressive web app. Works offline with cached agenda and exhibitor data — essential when venue Wi-Fi is unreliable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NeuroPlaces case study -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="grid grid-7-5" style="align-items: start;">
+          <div data-reveal>
+            <div class="section-header">
+              <span class="tag tag-green">In practice</span>
+              <h2>NeuroPlaces 2026 — neuroinclusion in practice</h2>
+            </div>
+            <div class="prose">
+              <p>Infobox is the app sponsor of NeuroPlaces 2026, the UK's first B2B conference and exhibition dedicated to neuroinclusive design in the built environment. The event takes place at the Business Design Centre, London on 29&ndash;30 October 2026.</p>
+              <p>We are building the event management platform for NeuroPlaces — a real-world application of everything we believe about neuroinclusive software design. The platform handles attendee registration, a sensory-aware agenda, an exhibitor directory with 25+ companies across six sectors, and attendee networking tools.</p>
+              <p>For a conference about neuroinclusion, the event app has to practise what the event preaches. Every design decision — from the 44px minimum tap targets to the sensory metadata on every session — reflects the principles the event is built around.</p>
+            </div>
+          </div>
+          <div data-reveal data-reveal-delay="100">
+            <div class="card card-accent">
+              <h3 class="card-title">NeuroPlaces 2026</h3>
+              <ul style="list-style: none; padding: 0; margin-top: var(--space-4);">
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Business Design Centre, London</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">29&ndash;30 October 2026</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">25+ exhibitors across 6 sectors</li>
+                <li style="padding: var(--space-2) 0; border-bottom: var(--border-subtle); font-size: var(--text-sm);">Sensory metadata on every session</li>
+                <li style="padding: var(--space-2) 0; font-size: var(--text-sm);">Infobox is the app sponsor</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neuroinclusive design principles -->
+    <section class="dark-panel section geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <h2>Neuroinclusive design is non-negotiable</h2>
+          <p style="color: rgba(255, 255, 255, 0.75); max-width: 60ch; margin-top: var(--space-4);">Every event platform we build follows these rules — not as a feature toggle, but as a foundation.</p>
+        </div>
+        <div class="stat-row" data-reveal>
+          <div class="stat-item">
+            <div class="stat-number">44px</div>
+            <div class="stat-label">Minimum tap target on every interactive element</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Modals, pop-ups, or interruptions unless user-triggered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Icons paired with text labels — no icon-only buttons</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology stack -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Technology stack</span>
+          <h2>Built on trusted foundations</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-blue">Blazor WebAssembly</span>
+          <span class="tag tag-blue">.NET 10</span>
+          <span class="tag tag-blue">ASP.NET Core Web API</span>
+          <span class="tag tag-blue">Entity Framework Core</span>
+          <span class="tag tag-blue">SignalR</span>
+          <span class="tag tag-blue">Microsoft Azure</span>
+          <span class="tag tag-silver">Progressive Web App</span>
+          <span class="tag tag-silver">JWT Authentication</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="section bg-page">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-green">Who it's for</span>
+          <h2>Built for these roles</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" data-reveal>
+          <span class="tag tag-green">Event Organisers</span>
+          <span class="tag tag-green">Attendees</span>
+          <span class="tag tag-green">Exhibitors</span>
+          <span class="tag tag-green">Speakers</span>
+          <span class="tag tag-green">Sponsors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related solutions -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-blue">Related solutions</span>
+          <h2>You might also need</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2" style="max-width: 800px;">
+          <div class="card" data-reveal data-reveal-delay="0">
+            <div class="card-icon card-icon-blue">&#127970;</div>
+            <span class="tag tag-blue">Portals</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Umbraco &amp; Dataverse Portals</h3>
+            <p class="card-description">Authenticated portals connected to Dataverse — a better alternative to Power Pages, with full design control.</p>
+            <a href="solution-portal.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="card" data-reveal data-reveal-delay="80">
+            <div class="card-icon card-icon-red">&#128295;</div>
+            <span class="tag tag-blue">Claims &amp; Workflow</span>
+            <h3 class="card-title" style="margin-top: var(--space-3);">Claims Management Platform</h3>
+            <p class="card-description">End-to-end platforms that track complex cases across multiple organisations.</p>
+            <a href="solution-detail.html" class="card-link">
+              Learn more
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-lg dark-panel dark-panel-cta geo-bg geo-bg-dark">
+      <div class="container">
+        <h2 data-reveal>Running an event that needs to work for everyone?</h2>
+        <p data-reveal>Tell us about your event. We'll show you how a neuroinclusive platform can improve the experience for all your attendees.</p>
+        <a href="contact.html" class="btn btn-primary-inverse" data-reveal>Start a conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="partials/accessibility.js"></script>
+  <script src="partials/footer.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

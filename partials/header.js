@@ -17,6 +17,7 @@ document.write(`<a href="#main" class="skip-link">Skip to main content</a>
             <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           </button>
           <ul class="nav-dropdown-menu">
+            <li><a href="solution-event.html">Event Management</a></li>
             <li><a href="solution-detail.html">Claims Management</a></li>
             <li><a href="solution-portal.html">Umbraco &amp; Dataverse Portals</a></li>
             <li><a href="solutions.html">View all solutions</a></li>

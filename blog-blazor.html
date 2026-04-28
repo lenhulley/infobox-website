@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choosing Blazor over React: a .NET team's perspective — Infobox Insights</title>
+  <meta name="description" content="Why we chose Blazor WebAssembly over React for our event management platform, and where the trade-offs actually land in practice.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <script src="partials/header.js"></script>
+
+  <script src="partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&h=600&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">.NET</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">21 April 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 7 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Choosing Blazor over React: a .NET team's perspective</h1>
+              <p class="text-lead">Why we chose Blazor WebAssembly over React for our event management platform, and where the trade-offs actually land for a team that lives in the .NET ecosystem.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>When we started building a new event management platform earlier this year, the frontend technology choice was the first real decision. We're a .NET team. Our backend was always going to be ASP.NET Core. The question was whether the frontend should be React (the industry default) or Blazor WebAssembly (the .NET-native option).</p>
+
+              <p>We chose Blazor. Six months in, here's where that decision has landed.</p>
+
+              <h2>The case for Blazor was operational, not ideological</h2>
+
+              <p>The argument for Blazor wasn't "React is bad" — React is a mature, well-supported framework with an enormous ecosystem. The argument was about our team, our stack, and our delivery model.</p>
+
+              <p>We're a small consultancy that delivers end-to-end. The same developers who design the data model also build the API, the frontend, and the deployment pipeline. Introducing React would have meant maintaining two language ecosystems (C# and TypeScript), two build systems (dotnet and npm/webpack/vite), two sets of testing tools, and two mental models for how state flows through the application.</p>
+
+              <p>With Blazor, the entire stack is C#. Shared DTOs between client and server. One set of tooling. One language for everything from Entity Framework queries to UI component logic. For a team of our size, that operational simplicity is worth more than React's ecosystem advantages.</p>
+
+              <h2>Where Blazor genuinely shines</h2>
+
+              <p><strong>Shared models.</strong> The same C# classes define the API request/response shapes and the client-side view models. When we add a field to a DTO, both sides know about it immediately. No JSON serialisation mismatches, no drift between TypeScript interfaces and C# models.</p>
+
+              <p><strong>Strong typing throughout.</strong> Blazor components are strongly typed in a way that JSX can't match. Component parameters, event callbacks, and cascading values are all checked at compile time. This catches an entire category of bugs that would surface at runtime in React.</p>
+
+              <p><strong>PWA support out of the box.</strong> Blazor WASM supports progressive web app features natively — service workers, offline caching, installability. For our event platform, where attendees need the app to work in a venue with unreliable Wi-Fi, this was essential. The PWA template gave us a working offline-capable app with minimal configuration.</p>
+
+              <p><strong>Component model.</strong> Razor components are straightforward to compose. The lifecycle is simpler than React's useEffect dependency arrays, and the rendering model is predictable. For developers who already know Razor from server-side work, the learning curve is minimal.</p>
+
+              <h2>Where the trade-offs land</h2>
+
+              <p><strong>Initial load time.</strong> This is Blazor WASM's most cited weakness, and it's real. The initial download includes the .NET runtime, which adds several megabytes to the first load. For our event app, we mitigate this with a loading screen and aggressive caching — after the first visit, subsequent loads are near-instant. For a public marketing site with SEO requirements, this would be a dealbreaker. For an authenticated line-of-business app, it's acceptable.</p>
+
+              <p><strong>Ecosystem size.</strong> React has thousands of component libraries, Blazor has dozens. We've occasionally had to build something that we could have installed as a React package. In practice, this has been less painful than expected — the components we need (data grids, form validation, modals) exist in mature Blazor libraries, and the simpler components are quick to build.</p>
+
+              <p><strong>Hiring and community.</strong> Finding React developers is easier than finding Blazor developers. For a consultancy our size, this isn't an immediate concern — but it's a real factor for larger organisations considering Blazor for team-scale projects.</p>
+
+              <blockquote>
+                The right frontend framework is the one that lets your team deliver reliably with the skills they have. For a .NET team building authenticated line-of-business apps, Blazor removes an entire category of integration complexity.
+              </blockquote>
+
+              <h2>When we'd still choose React</h2>
+
+              <p>Blazor isn't the right choice for everything. For a content-heavy public website that needs fast initial loads and strong SEO, server-rendered React (Next.js) or even plain server-side Razor Pages would be better choices. For a project with a dedicated frontend team that already knows React and TypeScript, introducing Blazor would create unnecessary friction.</p>
+
+              <p>Our recommendation is specific: if your team is .NET-native, your application is authenticated, your users will return repeatedly (so the initial load cost is amortised), and you value full-stack type safety — Blazor WebAssembly is a genuinely productive choice that eliminates real operational complexity.</p>
+
+              <h2>Six months in</h2>
+
+              <p>The event platform is in production, the codebase is clean, and we haven't hit a situation where we wished we'd chosen React. The shared model layer alone has prevented dozens of bugs that would have required manual TypeScript-to-C# synchronisation. The PWA works offline. The components render predictably.</p>
+
+              <p>Blazor isn't the future of all web development. But for .NET teams building line-of-business applications, it's a legitimate first choice — not a compromise.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&h=340&q=80" alt="Conference hall with rows of seats and stage lighting" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Events</span>
+                <span class="post-card-date">28 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-sensory-metadata.html">Why your event app should know how loud the room will be</a></h3>
+              <p class="post-card-excerpt">Sensory metadata is the missing layer in event management platforms.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&h=340&q=80" alt="Abstract view of global data networks and connections" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">AI</span>
+                <span class="post-card-date">24 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-post.html">The honest cost of AI-assisted development</a></h3>
+              <p class="post-card-excerpt">What actually changed in cost, quality, and client relationships after 18 months.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="partials/accessibility.js"></script>
+  <script src="partials/footer.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

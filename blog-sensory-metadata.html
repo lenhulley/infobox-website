@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why your event app should know how loud the room will be — Infobox Insights</title>
+  <meta name="description" content="Sensory metadata — noise levels, lighting, crowd density — is the missing layer in event management platforms. Here's why it matters and how we built it.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <script src="partials/header.js"></script>
+
+  <script src="partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&h=600&q=80" alt="Conference hall with rows of seats and stage lighting" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-green">Events</span>
+                <span class="tag tag-green">Accessibility</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">28 April 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 7 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Why your event app should know how loud the room will be</h1>
+              <p class="text-lead">Sensory metadata — noise levels, lighting conditions, crowd density — is the missing layer in event management platforms. Here's why it matters and how we approach it.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>Walk into any large conference or exhibition and you'll notice the same pattern: some rooms are calm and focused, others are loud and chaotic. Some sessions are intimate round-table discussions, others are keynotes with 500 people and a full AV rig. The sensory experience varies enormously from session to session.</p>
+
+              <p>Now consider that around 1 in 7 of your attendees are neurodivergent. For someone with autism, ADHD, or sensory processing differences, the gap between a quiet workshop and a packed keynote hall isn't a minor detail — it's the difference between a productive session and an overwhelming one.</p>
+
+              <p>Yet almost no event management platform captures this information. You can filter sessions by topic, by speaker, by time slot. You can't filter by "will this room be loud?"</p>
+
+              <h2>What sensory metadata looks like</h2>
+
+              <p>When we started building our event management platform, we made sensory metadata a first-class entity — not an optional field buried in a notes section, but a structured part of every session record. Each session carries four dimensions of sensory information:</p>
+
+              <p><strong>Noise level</strong> (low, medium, high) — is this a quiet panel discussion or a demo with live music? The distinction matters enormously for attendees who are sensitive to auditory stimulation.</p>
+
+              <p><strong>Lighting condition</strong> (dim, normal, bright) — will there be stage spotlights, a darkened room with projected slides, or natural daylight? Lighting affects focus and comfort for many neurodivergent attendees.</p>
+
+              <p><strong>Expected crowd density</strong> (low, medium, high) — a workshop for 20 people feels very different from a plenary for 400. Knowing this in advance helps attendees plan their energy across the day.</p>
+
+              <p><strong>Content intensity</strong> (presentation, discussion, technical, workshop) — the cognitive demand of passively watching a keynote is different from actively participating in a hands-on workshop. This helps attendees pace themselves.</p>
+
+              <h2>Why this matters for all attendees</h2>
+
+              <p>The common objection to sensory metadata is that it's a "nice to have" for a small minority of attendees. This misunderstands both the scale and the nature of the problem.</p>
+
+              <p>First, the numbers: 15-20% of the UK population is neurodivergent. At a 500-person conference, that's 75-100 attendees who may experience the sensory environment differently. These aren't edge cases — they're a significant proportion of your audience.</p>
+
+              <p>Second, the information is useful for everyone. Neurotypical attendees also benefit from knowing whether a session will be a high-energy panel or a quiet deep-dive. Parents with young children, people recovering from illness, anyone who's tired after a long morning of networking — all of them make better decisions when they understand what they're walking into.</p>
+
+              <blockquote>
+                Designing for neurodivergent attendees doesn't create a separate, lesser experience. It creates better information architecture that helps everyone navigate the event more effectively.
+              </blockquote>
+
+              <h2>How we implemented it</h2>
+
+              <p>The implementation is straightforward once you commit to the data model. Each session in our platform has a <code>NoiseLevel</code>, <code>LightingCondition</code>, <code>CrowdDensity</code>, and <code>ContentIntensity</code> enum. These are set by the event organiser when configuring the agenda.</p>
+
+              <p>On the attendee side, the agenda view displays sensory indicators alongside the standard session information — title, time, speaker, room. Attendees can filter by any combination of sensory dimensions, so someone who wants to avoid high-noise sessions can do so without scrolling through the entire programme.</p>
+
+              <p>The sensory metadata also appears on individual session detail pages, using clear text labels and colour coding (never colour alone — that would be ironic for an accessibility feature). An attendee can see at a glance: "This session is in a bright room, medium crowd expected, discussion format."</p>
+
+              <h2>The organiser's perspective</h2>
+
+              <p>Event organisers initially worry that sensory metadata is extra work. In practice, they already know this information — they've booked the rooms, they know the format, they have a rough idea of expected attendance. The platform just asks them to make that implicit knowledge explicit.</p>
+
+              <p>The payoff is significant. Organisers who provide sensory metadata can market their event as genuinely neuroinclusive, not just compliant. For events in sectors like architecture, design, healthcare, and education — where neuroinclusion is increasingly a professional concern — this is a competitive advantage.</p>
+
+              <h2>What comes next</h2>
+
+              <p>Sensory metadata is the foundation, not the ceiling. Future iterations of the platform will support quiet zones and sensory break areas on the floorplan, real-time crowd density estimates based on check-in data, and post-event feedback specifically about the sensory experience.</p>
+
+              <p>The goal isn't to create a separate neuroinclusive track running alongside the "real" event. It's to make the entire event more navigable, more predictable, and more comfortable for everyone who attends. Sensory metadata is how that starts.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&h=340&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Accessibility</span>
+                <span class="post-card-date">8 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-cognitive-load.html">Designing for cognitive load in complex portals</a></h3>
+              <p class="post-card-excerpt">How we reduce cognitive load in membership portals, claims platforms, and internal tools.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=600&h=340&q=80" alt="Diverse group of people collaborating in a bright, modern workspace" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-green">Accessibility</span>
+                <span class="post-card-date">31 March 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="blog-neuroinclusion.html">What neuroinclusivity means in the digital world</a></h3>
+              <p class="post-card-excerpt">Around 1 in 7 people are neurodivergent. Most digital platforms aren't built with them in mind.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="partials/accessibility.js"></script>
+  <script src="partials/footer.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
