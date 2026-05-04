@@ -59,14 +59,15 @@ function initNav() {
     }, { passive: true });
   }
 
-  // Active link state
-  var currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  // Active link state — match exact path, or section index (e.g. /insights/) for any sub-page
+  var currentPath = window.location.pathname;
   var navLinks = document.querySelectorAll('.nav-link, .mobile-nav a');
   navLinks.forEach(function (link) {
     var href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
+    if (!href) return;
+    var isActive = href === currentPath
+      || (href !== '/' && href.endsWith('/') && currentPath.startsWith(href));
+    if (isActive) link.classList.add('active');
   });
 
   // Dropdown toggle
