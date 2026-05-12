@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — Infobox</title>
+  <meta name="description" content="Technical insights, industry perspectives, and project stories from the Infobox team.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+
+  <script src="partials/header.js"></script>
+
+  <script src="partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero hero-medium geo-bg geo-bg-dark">
+      <div class="container">
+        <div class="hero-content">
+          <span class="tag tag-blue" data-hero-animate>Insights</span>
+          <h1 data-hero-animate>What we're thinking about</h1>
+          <p class="text-lead" data-hero-animate>Technical deep-dives, project stories, and honest perspectives on the Microsoft ecosystem, Umbraco, and AI in delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content area -->
+    <section class="section bg-page">
+      <div class="container">
+        <div>
+
+          <div>
+
+            <!-- Featured post -->
+            <article class="post-card post-featured" style="margin-bottom: var(--space-8);" data-reveal>
+              <div class="post-card-image" style="overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=960&h=540&q=80" alt="Close-up of a blue circuit board with intricate copper traces" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="post-card-body">
+                <div class="post-card-meta">
+                  <span class="tag tag-blue">AI</span>
+                  <span class="post-card-date">11 May 2026</span>
+                </div>
+                <h2 class="post-card-title">
+                  <a href="blog-claude-code-hooks.html">Claude Code hooks: the deterministic edge of AI-assisted delivery</a>
+                </h2>
+                <p class="post-card-excerpt">Hooks are the part of Claude Code that doesn't roll dice. A technical look at the events, the JSON contract, and why hooks belong in any serious AI-assisted delivery setup.</p>
+                <a href="blog-claude-code-hooks.html" class="card-link" style="margin-top: var(--space-4);">
+                  Read more
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style="gap: var(--space-6);">
+
+              <article class="post-card" data-reveal data-reveal-delay="0">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&h=340&q=80" alt="Conference hall with rows of seats and stage lighting" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-green">Events</span>
+                    <span class="tag tag-green">Accessibility</span>
+                    <span class="post-card-date">28 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-sensory-metadata.html">Why your event app should know how loud the room will be</a>
+                  </h3>
+                  <p class="post-card-excerpt">Sensory metadata &mdash; noise levels, lighting conditions, crowd density &mdash; is the missing layer in event management platforms.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="80">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-blue">.NET</span>
+                    <span class="post-card-date">21 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-blazor.html">Choosing Blazor over React: a .NET team's perspective</a>
+                  </h3>
+                  <p class="post-card-excerpt">Why we chose Blazor WebAssembly over React for our event platform, and where the trade-offs land for a .NET-native team.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="160">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-blue">Umbraco</span>
+                    <span class="tag tag-blue">Power Platform</span>
+                    <span class="post-card-date">14 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-umbraco-dataverse.html">Umbraco and Dataverse portals: the Power Pages alternative</a>
+                  </h3>
+                  <p class="post-card-excerpt">Why we build authenticated portals on Umbraco connected to Dataverse instead of using Power Pages.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="0">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&h=340&q=80" alt="Clean, organised workspace with a single notebook and pen" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-green">Accessibility</span>
+                    <span class="post-card-date">8 April 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-cognitive-load.html">Designing for cognitive load in complex portals</a>
+                  </h3>
+                  <p class="post-card-excerpt">Complex portals don't have to feel complex. Here's how we reduce cognitive load in membership portals, claims platforms, and internal tools.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="80">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=600&h=340&q=80" alt="Diverse group of people collaborating in a bright, modern workspace" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-green">Accessibility</span>
+                    <span class="post-card-date">31 March 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-neuroinclusion.html">What neuroinclusivity means in the digital world</a>
+                  </h3>
+                  <p class="post-card-excerpt">Around 1 in 7 people are neurodivergent. Most digital platforms aren't built with them in mind.</p>
+                </div>
+              </article>
+
+              <article class="post-card" data-reveal data-reveal-delay="160">
+                <div class="post-card-image" style="overflow: hidden;">
+                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&h=340&q=80" alt="Server room with blue lighting" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="post-card-body">
+                  <div class="post-card-meta">
+                    <span class="tag tag-blue">AI</span>
+                    <span class="post-card-date">24 March 2026</span>
+                  </div>
+                  <h3 class="post-card-title">
+                    <a href="blog-post.html">The honest cost of AI-assisted development</a>
+                  </h3>
+                  <p class="post-card-excerpt">We've been using Claude Code and the Claude API in production delivery for over a year. Here's what actually changed in cost, quality, and client relationships.</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="partials/accessibility.js"></script>
+  <script src="partials/footer.js"></script>
+
+  <script src="js/nav.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
