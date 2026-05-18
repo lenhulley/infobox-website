@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dataverse low-code plug-ins: where Power Fx fits, and where it doesn't &mdash; Infobox Insights</title>
+  <meta name="description" content="Power Fx as a Dataverse extensibility model is two years into preview, with the instant variant already retired. A look at where low-code plug-ins fit, and where the C# plug-in still carries the load.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+</head>
+<body>
+
+  <script src="/partials/header.js"></script>
+
+  <script src="/partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&h=600&q=80" alt="Analytics dashboard displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">Power Platform</span>
+                <span class="tag tag-blue">Dataverse</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">18 May 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 6 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Dataverse low-code plug-ins: where Power Fx fits, and where it doesn't</h1>
+              <p class="text-lead">Power Fx as a Dataverse extensibility model is two years into preview, with the instant variant already retired. A look at where the low-code surface fits &mdash; and where the C# plug-in still has to do the work.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>For nearly two decades, the answer to "how do I run server-side logic in Dataverse?" has been one thing: a compiled .NET assembly implementing <code>IPlugin</code>, signed, uploaded through the Plug-in Registration Tool, and bound to a step in the message pipeline. Microsoft's documented alternative &mdash; low-code plug-ins authored in Power Fx &mdash; has been visible in the Dataverse accelerator app since 2023, and it is still in preview at the time of writing. That gap between announcement and general availability is worth taking seriously. It says something about where this capability fits in a serious extensibility strategy.</p>
+
+              <p>The model itself is simple. A low-code plug-in is a Power Fx expression stored inside Dataverse and executed server-side in response to an event. Microsoft documents two flavours: <em>instant</em> plug-ins, manually invoked with custom input and output parameters; and <em>automated</em> plug-ins, which fire on Create, Update, or Delete events against a chosen table. Both are authored inside the Dataverse accelerator app &mdash; a model-driven app that ships preview tooling. The accelerator is automatically installed in environments created from 1 October 2023 onwards; older environments need it installed manually from the Power Platform admin centre.</p>
+
+              <p>That much matches the marketing. The interesting nuance is what Microsoft has documented about the trajectory.</p>
+
+              <h2>The instant pivot</h2>
+
+              <p>The "Tips when working with low-code plug-ins" page on Microsoft Learn carries an unusually direct statement: "Instant low-code plug-ins are deprioritized and aren't being delivered as a feature. Instant low-code plug-ins are replaced with functions." The replacement &mdash; Dataverse functions &mdash; is itself in preview.</p>
+
+              <p>Read carefully, that line is a vendor admission that half of the original low-code plug-in pitch has been quietly retired. For teams who built a strategy around instant plug-ins as a reusable, callable unit of server-side logic, the migration path now points to a different feature. Anyone evaluating the technology today should plan around automated plug-ins only, and treat any tutorial that demonstrates instant plug-ins as historical context.</p>
+
+              <h2>What the runtime actually allows</h2>
+
+              <p>The Power Fx dialect used in low-code plug-ins is a subset of the one used in canvas apps, not a superset. The reference page documents the gap explicitly: <code>Clear</code>, <code>ClearCollect</code>, <code>Update</code>, <code>UpdateIf</code>, <code>GroupBy</code>, <code>Search</code>, the form-related functions, and the device-sensor functions are all unsupported. <code>Defaults()</code> &mdash; useful for instantiating an empty record before patching it &mdash; does not exist either; the documented workaround is to use <code>Collect()</code> against a typed variable.</p>
+
+              <p>Two operational limits matter more than the formula gaps in practice.</p>
+
+              <p>The first is the two-minute timeout. Any plug-in execution that exceeds it fails with the message <em>"Operation not allowed as plugin execution exceeded maximum allowed time"</em>. C# plug-ins share the same ceiling, but a C# author has access to lower-level optimisation that a Power Fx expression does not. A handful of connector calls inside an automated plug-in can consume a surprising amount of that envelope.</p>
+
+              <p>The second is the infinite-loop trap. <code>Patch()</code> inside an automated plug-in registered on Update will, if it targets the same table, trigger the plug-in again. Microsoft calls this out specifically and recommends <code>Set()</code> against local context, or a <code>Patch()</code> against a different table or record. The C# equivalent &mdash; checking the <code>Depth</code> property on the execution context &mdash; is not exposed to Power Fx, so the discipline has to come from the author rather than from a runtime check.</p>
+
+              <h2>Where connectors change the equation</h2>
+
+              <p>The genuine differentiator over the C# plug-in model is connector access. A C# plug-in runs inside the Dataverse sandbox; outbound HTTP requires explicit configuration, the managed-identity story is non-trivial, and developers end up writing similar authentication boilerplate for every external call. A low-code plug-in can invoke any Power Platform connector &mdash; first-party, certified, or custom &mdash; via a connection reference deployed with the solution. The published examples show MSN Weather, email via templates, and in-app notifications all being called from inside automated plug-ins.</p>
+
+              <p>Microsoft does note that "not all connector actions are supported at this time", and that connection references must be created before the plug-in is authored. But for scenarios that would otherwise require either a Power Automate cloud flow with its own latency budget, or a custom Azure Function with its own deployment story, this is a meaningfully simpler model.</p>
+
+              <h2>When the C# plug-in still wins</h2>
+
+              <p>The Power Fx model is not a replacement for everything <code>IPlugin</code> offers. Anywhere the following matters, the compiled route remains the right answer:</p>
+
+              <p><strong>Pre-image and post-image manipulation.</strong> <code>IPluginExecutionContext</code> exposes <code>PreEntityImages</code> and <code>PostEntityImages</code>, which make pre-validation and field-change auditing straightforward. The low-code surface does not expose equivalents.</p>
+
+              <p><strong>Transactional control and shared variables.</strong> Multi-step transactions, plug-in chaining via <code>SharedVariables</code>, and depth-aware recursion guards are all C# territory.</p>
+
+              <p><strong>Performance-critical execution.</strong> Community benchmarks have consistently measured Power Fx plug-ins running noticeably slower than equivalent C# logic. For high-volume integrations or hot-path validation, that cost is not negligible.</p>
+
+              <p><strong>Production-grade reliability today.</strong> Until the feature moves out of preview, the documentation itself states that preview features "aren't meant for production use and may have restricted functionality". Reading past that line is a business risk to own deliberately, not a technical decision to default to.</p>
+
+              <blockquote>
+                The interesting question is not "is Power Fx fast enough to replace C# plug-ins?" It's "which logic genuinely belongs to a maker, and which still belongs to a developer with a signed assembly and a CI pipeline?"
+              </blockquote>
+
+              <h2>The honest read</h2>
+
+              <p>Dataverse low-code plug-ins earn their place in two specific situations. The first is connector-driven side effects on table events &mdash; sending a notification, posting to Teams, calling out to a SaaS &mdash; where the C# alternative would be heavyweight for what the rule is doing. The second is logic that genuinely belongs to a maker rather than a developer, where the cost of building, signing, and registering a .NET assembly is out of proportion to the constraint being encoded.</p>
+
+              <p>Outside those two zones, the picture is less generous. The retirement of instant plug-ins, the preview status that has not shifted in over two years, the Power Fx feature gaps, and the missing execution-context primitives all point in the same direction. Low-code plug-ins are a complement to compiled extensibility in Dataverse, not a successor to it.</p>
+
+              <p>Teams looking at the technology should plan accordingly: pilot the automated variant against a defined business event, design around the documented constraints rather than discovering them in production, and assume the pro-code plug-in path will keep doing the heavy lifting for the foreseeable future.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="tag tag-blue">Power Platform</span>
+                <span class="post-card-date">14 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/umbraco-dataverse.html">Umbraco and Dataverse portals: the Power Pages alternative</a></h3>
+              <p class="post-card-excerpt">Why authenticated portals built on Umbraco connected to Dataverse can be a better fit than Power Pages &mdash; and where Power Pages still makes sense.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">.NET</span>
+                <span class="post-card-date">21 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/blazor.html">Choosing Blazor over React: a .NET team's perspective</a></h3>
+              <p class="post-card-excerpt">Why a .NET-native team would choose Blazor WebAssembly over React, and where the trade-offs actually land.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/partials/accessibility.js"></script>
+  <script src="/partials/footer.js"></script>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>
