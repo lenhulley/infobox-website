@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three years of the Umbraco Delivery API: where headless-on-the-CMS lands &mdash; Infobox Insights</title>
+  <meta name="description" content="Umbraco 12 shipped a first-party Content Delivery API in June 2023. Three years and four major versions later, the question of whether to reach for Heartcore, a third-party headless CMS, or Umbraco itself has a different shape.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+</head>
+<body>
+
+  <script src="/partials/header.js"></script>
+
+  <script src="/partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&h=600&q=80" alt="Developer workspace with code editor open on a laptop" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="tag tag-blue">Headless</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">25 May 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 7 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Three years of the Umbraco Delivery API: where headless-on-the-CMS lands</h1>
+              <p class="text-lead">Umbraco 12 shipped a first-party Content Delivery API in June 2023. Three years and four major versions later, the question of whether to reach for Heartcore, a third-party headless CMS, or Umbraco itself has a different shape than it used to.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>For years the &ldquo;is Umbraco headless?&rdquo; conversation had a tidy two-product answer. Umbraco CMS rendered Razor views; Umbraco Heartcore, the managed SaaS offering, delivered JSON over HTTP. If you wanted a decoupled front end against an Umbraco editorial experience, Heartcore was the path, and the only path that was first-party.</p>
+
+              <p>That stopped being true with Umbraco 12, released on 29 June 2023, which shipped the Content Delivery API as a generally available feature of the open-source CMS. Three years on, with Umbraco 13 carrying the long-term-support label, Umbraco 17.4.0 released on 19 May 2026, and the Bellissima backoffice rewrite having landed in Umbraco 14, the architectural conversation around Umbraco and JSON has moved on. It is worth stopping to look at what is actually in the box, and where it does and does not change the calculus.</p>
+
+              <h2>What ships out of the box</h2>
+
+              <p>The Content Delivery API is exposed at <code>/umbraco/delivery/api/v2/content</code> with a companion media endpoint at <code>/umbraco/delivery/api/v2/media</code>. An OpenAPI description is published at <code>/umbraco/swagger</code>, which makes client generation straightforward against the standard .NET, TypeScript, and Java tooling that already knows how to read it.</p>
+
+              <p>Queries are shaped by a small set of well-documented parameters. <code>fetch</code> applies a structural selector &mdash; <code>fetch=children:{id}</code>, <code>fetch=descendants:{id}</code>, <code>fetch=ancestors:{id}</code> &mdash; against either the GUID or the URL path of a content item. <code>filter</code> and <code>sort</code> handle the predicate work. <code>expand</code> controls which nested properties are inlined into the response, with the syntax <code>expand=properties[$all]</code> to expand everything expandable, or <code>expand=properties[alias1,alias2]</code> to expand a specific subset. <code>fields</code> mirrors that syntax for output projection. Combined, those four parameters cover the common shape of a content query without forcing custom code on either end.</p>
+
+              <p>Output caching is opt-in and, importantly, tag-aware. When responses are cached, Umbraco tags them with identifiers tied to the underlying content; when an editor publishes a change, the relevant tags are evicted rather than the entire cache. For a content surface that traditionally lived behind a CDN with manual purges, that is a meaningful operational improvement.</p>
+
+              <h2>Authentication is the part that matters</h2>
+
+              <p>The most overlooked part of the Delivery API is its auth story, because the headline feature is the unauthenticated endpoint. By default the API only exposes content that is not protected by an Umbraco public-access rule. Anything behind a member group is invisible &mdash; not 401, not 403, just absent &mdash; until member authorisation is explicitly enabled in <code>appsettings.json</code>.</p>
+
+              <p>When it is enabled, the model is OpenID Connect: the Authorization Code Flow with PKCE for interactive member sessions, and the Client Credentials Flow for server-to-server consumers. The latter is the interesting one. Client Credentials in this context map an API consumer to an &ldquo;API Member&rdquo; identity inside Umbraco; the consumer exchanges its client ID and secret for an access token at the Delivery API&rsquo;s token endpoint, then uses that token as a bearer credential against the protected content endpoints. The token effectively impersonates the API Member, so the existing public-access rules continue to define what the consumer can read.</p>
+
+              <p>Two operational details are worth flagging. The first is that toggling member authorisation requires a rebuild of the <code>DeliveryApiContentIndex</code> through the Examine management dashboard, because the index needs to reflect the new protection state. The second is that the documentation is explicit about reusing access tokens for their full lifetime rather than minting a new token per request &mdash; sensible for performance, but easy to miss in a first integration.</p>
+
+              <h2>What Bellissima changes about the architecture</h2>
+
+              <p>The other architectural shift sits behind the scenes. Umbraco 14 replaced the long-standing AngularJS backoffice with a rewritten one, codenamed Bellissima, built on Web Components, Lit, TypeScript, and Vite. The official documentation is direct that the backoffice now consumes a Management API the same way a third-party SPA would: Umbraco&rsquo;s own administrative interface is, in effect, a headless client of its own server.</p>
+
+              <p>The downstream effect for teams building on the platform is that the Delivery API is no longer a side-feature of an otherwise monolithic CMS. It is the public-facing sibling of an architecture that is now wholly decoupled internally. That is also why Umbraco explicitly allows extension authors to use any framework that compiles to Web Components &mdash; React, Vue, Svelte, or plain Lit &mdash; rather than forcing them onto the in-house stack. The same pattern applies to the public front end: the choice of Next.js, Nuxt, Astro, SvelteKit, or Razor is no longer constrained by the CMS.</p>
+
+              <h2>What it does not replace</h2>
+
+              <p>Three caveats are worth stating plainly.</p>
+
+              <p>First, the Delivery API is REST, not GraphQL. The combination of <code>fetch</code>, <code>filter</code>, <code>expand</code>, and <code>fields</code> covers a large share of practical queries, but federation across multiple back-ends, deeply nested ad-hoc selections, and schema-first tooling remain GraphQL strengths. Heartcore, by contrast, exposes a GraphQL endpoint alongside its REST surface; teams that have built around GraphQL clients should keep that on the comparison table.</p>
+
+              <p>Second, the built-in endpoints are opinionated. The escape hatch is <code>IApiPublishedContentCache</code> and <code>IApiContentResponseBuilder</code>, both of which are documented in the &ldquo;Custom Delivery API endpoints&rdquo; reference and let .NET developers compose responses that the default routes do not produce. That is a developer task, not an editor task, and worth scoping early when the off-the-shelf shape does not fit.</p>
+
+              <p>Third, the Delivery API is read-only. Content authoring still happens through the Bellissima backoffice or, for programmatic ingestion, the Management API. Anyone planning a write-through path from a front-end should use the Management API and treat the Delivery API as the read surface it was designed to be.</p>
+
+              <blockquote>
+                The architectural question for an Umbraco-backed front end has shifted from &ldquo;which Umbraco product&rdquo; to &ldquo;which hosting model.&rdquo; The capability gap between the open-source CMS and the managed headless service has narrowed to the points that are genuinely about operations rather than features.
+              </blockquote>
+
+              <h2>The honest read</h2>
+
+              <p>The Delivery API is no longer a preview, no longer a side experiment, and no longer the reason to default to a third-party headless CMS for an Umbraco-fronted project. With Umbraco 13 supported through December 2026 and Umbraco 17 lined up as the next long-term-support release on .NET 10, both supported versions ship the same API surface, on the same release cadence as the rest of the CMS.</p>
+
+              <p>That does not mean the Delivery API is the right answer for every project. Heartcore continues to make sense when nobody on the team wants to operate a .NET host. A third-party headless CMS still makes sense when content already lives elsewhere or when GraphQL federation is a hard requirement. Razor still makes sense when the front end is server-rendered and SEO-driven and the editor experience benefits from preview-as-you-edit.</p>
+
+              <p>The point is that the choice now sits on operations and team shape rather than on what the platform can or cannot do. For a .NET team comfortable hosting Umbraco, the Delivery API closes the last gap that used to push that decision toward a different product.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&h=340&q=80" alt="Dashboard analytics displayed on a laptop screen" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="tag tag-blue">Power Platform</span>
+                <span class="post-card-date">14 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/umbraco-dataverse.html">Umbraco and Dataverse portals: the Power Pages alternative</a></h3>
+              <p class="post-card-excerpt">Why authenticated portals built on Umbraco connected to Dataverse can be a better fit than Power Pages &mdash; and where Power Pages still makes sense.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">.NET</span>
+                <span class="post-card-date">21 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/blazor.html">Choosing Blazor over React: a .NET team's perspective</a></h3>
+              <p class="post-card-excerpt">Why a .NET-native team would choose Blazor WebAssembly over React, and where the trade-offs actually land.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/partials/accessibility.js"></script>
+  <script src="/partials/footer.js"></script>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>
