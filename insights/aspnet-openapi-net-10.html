@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Built-in OpenAPI in .NET 10: where the ASP.NET Core API contract story finally lands &mdash; Infobox Insights</title>
+  <meta name="description" content=".NET 10 ships OpenAPI 3.1, YAML output, XML doc integration, transformer-based customisation and Native AOT support in the box. A look at what that means for new ASP.NET Core APIs and the future of Swashbuckle.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+</head>
+<body>
+
+  <script src="/partials/header.js"></script>
+
+  <script src="/partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1400&h=600&q=80" alt="Source code displayed on a dark screen with structured indentation" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">.NET</span>
+                <span class="tag tag-blue">ASP.NET Core</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">1 June 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 7 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">Built-in OpenAPI in .NET 10: where the ASP.NET Core API contract story finally lands</h1>
+              <p class="text-lead">.NET 10 ships OpenAPI 3.1, YAML output, XML doc integration, a proper transformer model and Native AOT support &mdash; all in the first-party package. The Swashbuckle decision finally has a default answer.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>For a decade, the default way to put an OpenAPI document on an ASP.NET Core API was to install <strong>Swashbuckle</strong>, configure its services, wire up the middleware, and accept that everything Swagger-related was a community package with its own release cadence. It worked. It was also a small but persistent reminder that the framework gave you the surface area and the community gave you the contract.</p>
+
+              <p>In .NET 9, Microsoft ended that arrangement. The default web API template stopped shipping Swashbuckle and pulled in <code>Microsoft.AspNetCore.OpenApi</code> instead. .NET 10, which went GA as a Long-Term Support release on 11 November 2025 with support through 14 November 2028, is the version where that decision has fully matured.</p>
+
+              <h2>What ships in the box</h2>
+
+              <p>Microsoft.AspNetCore.OpenApi in .NET 10 generates <strong>OpenAPI 3.1</strong> documents by default, up from 3.0 in .NET 9. The version bump is more consequential than it sounds: OpenAPI 3.1 aligns the schema model with <strong>JSON Schema draft 2020-12</strong>, which means the contract a .NET API publishes is now structurally compatible with the JSON Schema dialect that the rest of the tooling world has settled on. Reference resolution, descriptions alongside <code>$ref</code>, and nullable handling all behave the way contemporary linters and code generators expect.</p>
+
+              <p>The basic wiring is still two lines: <code>builder.Services.AddOpenApi()</code> and <code>app.MapOpenApi()</code>, exposing the document at <code>/openapi/v1.json</code>. Swap the extension for <code>.yaml</code> or <code>.yml</code> in the route template &mdash; <code>app.MapOpenApi("/openapi/{documentName}.yaml")</code> &mdash; and the document is emitted as YAML at runtime. That addition lands in .NET 10. The document name is a route parameter, so a single API can publish <code>v1.json</code>, <code>v2.json</code> and <code>internal.json</code> from the same pipeline by registering multiple named documents with <code>AddOpenApi("v2")</code>.</p>
+
+              <h2>XML comments are no longer a separate problem</h2>
+
+              <p>Pulling XML doc comments into the OpenAPI document has historically required configuring Swashbuckle to read the file the C# compiler emits, then handling the case where it isn't there in CI. .NET 10's OpenAPI generator does this automatically once the project enables <code>GenerateDocumentationFile</code>. Triple-slash comments on controllers, minimal API methods, classes and properties &mdash; including properties on <code>[AsParameters]</code> binding types &mdash; flow into the generated document with no additional configuration.</p>
+
+              <h2>The transformer model</h2>
+
+              <p>Customising the generated document is now done through three transformer types, with a defined execution order:</p>
+
+              <ul>
+                <li><strong>Schema transformers</strong> &mdash; one CLR type maps to one schema. These run first, as schemas are registered to the document.</li>
+                <li><strong>Operation transformers</strong> &mdash; one operation is one path plus HTTP method. These run as operations are added.</li>
+                <li><strong>Document transformers</strong> &mdash; see the entire document. These run last.</li>
+              </ul>
+
+              <p>The transformer context in .NET 10 also exposes a <code>GetOrCreateSchemaAsync</code> method that resolves the schema for a CLR type using the same code path the framework would, and a <code>Document</code> property that allows any transformer to add components via <code>AddComponent</code>. That is exactly the seam the earlier transformer API was missing &mdash; there was no first-party route to dynamically add a schema from inside a transformer without reconstructing what the framework had already built.</p>
+
+              <h2>WithOpenApi is going away</h2>
+
+              <p>.NET 10 also deprecates the <code>WithOpenApi()</code> extension method on minimal API endpoints. Calls still compile and run, but the compiler now emits diagnostic <strong>ASPDEPR002</strong> along with a standard <code>Obsolete</code> warning. The breaking-change notice frames the rationale plainly: <code>WithOpenApi</code> duplicated functionality the document-generation pipeline already provides.</p>
+
+              <p>The migration path for projects on the built-in stack is to register an operation transformer with <code>AddOpenApiOperationTransformer</code>. Swashbuckle and NSwag users keep their respective <code>IOperationFilter</code> and <code>IOperationProcessor</code> extension points; only the built-in shortcut is being removed.</p>
+
+              <h2>Build-time generation, not just runtime</h2>
+
+              <p>The runtime endpoint is the visible part of the new stack, but the more interesting change for teams that take API contracts seriously is build-time generation. Adding <code>Microsoft.Extensions.ApiDescription.Server</code> to a project causes the OpenAPI document to be emitted to the <code>obj</code> directory on every build. The <code>OpenApiDocumentsDirectory</code> MSBuild property redirects that output; <code>OpenApiGenerateDocumentsOptions</code> controls the filename and the OpenAPI version emitted.</p>
+
+              <p>That is the configuration that matters for production discipline. Once the document is part of the build, it can be committed alongside the source, diffed in pull requests, linted by Spectral or any other OpenAPI linter, and consumed by client-generator pipelines without spinning up the API host. Contract changes become visible code-review surface. The same outcome was achievable with Swashbuckle plus a CI step, but it required configuration most teams skipped.</p>
+
+              <h2>Native AOT is in scope</h2>
+
+              <p>In earlier versions, the moment a project enabled Native AOT the OpenAPI story broke &mdash; Swashbuckle's generation relied on reflection patterns the trimmer couldn't preserve. The built-in generator in .NET 10 is AOT-compatible. That makes OpenAPI documentation viable for minimal API services published as small, self-contained AOT executables &mdash; the deployment model that .NET 9 made attractive and .NET 10 makes practical for production services.</p>
+
+              <h2>IOpenApiDocumentProvider</h2>
+
+              <p>One quieter addition: <code>IOpenApiDocumentProvider</code> is now available through the DI container. Injecting it gives any service access to the generated document outside the context of an HTTP request &mdash; useful for background workers that need to publish contract metadata, for tools that produce SDKs from the running configuration, or simply for unit tests that want to assert on the shape of a document without booting Kestrel.</p>
+
+              <blockquote>
+                The thing that changed in .NET 10 isn't a single feature. It's that "Swashbuckle or the new thing?" no longer needs to be re-litigated on every new project.
+              </blockquote>
+
+              <h2>Where Swashbuckle still fits</h2>
+
+              <p>The package isn't dead. Swashbuckle 10 supports .NET 10 and offers opt-in OpenAPI 3.1. The reason to install it now is narrower: serving the Swagger UI. The built-in package generates the document but does not ship an in-browser explorer &mdash; that is a deliberate scope decision. Projects that want a UI can add <code>Swashbuckle.AspNetCore.SwaggerUI</code> and point its <code>SwaggerEndpoint</code> at the built-in <code>/openapi/v1.json</code> route, or adopt one of the newer alternatives such as <strong>Scalar</strong>, which is increasingly the default in the .NET community.</p>
+
+              <h2>What the default looks like in 2026</h2>
+
+              <p>For new ASP.NET Core services, the calculus has changed. The .NET 10 API template does not include Swashbuckle, and there is no longer a feature gap that justifies adding it back for document generation. OpenAPI 3.1, XML doc integration, transformer-based customisation, YAML output, build-time emission and AOT support are all in the first-party package.</p>
+
+              <p>For services on .NET 8 &mdash; the previous LTS, supported until November 2026 &mdash; the migration calculus is different: stay on Swashbuckle until the .NET 10 upgrade, then make the swap deliberately. The <code>WithOpenApi</code> deprecation is the natural cue to plan that swap alongside the runtime upgrade rather than as a separate piece of work.</p>
+
+              <p>The signal in .NET 10 is not that the new package finally caught up with Swashbuckle. It's that the new package now does things Swashbuckle never quite did: build-time emission as a first-class concern, AOT compatibility, schema fidelity with the wider JSON Schema world. The contract is, at last, part of the framework.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">.NET</span>
+                <span class="post-card-date">21 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/blazor.html">Choosing Blazor over React: a .NET team's perspective</a></h3>
+              <p class="post-card-excerpt">Where Blazor WebAssembly removes operational complexity for .NET-native teams, and where it doesn't.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&h=340&q=80" alt="Developer workspace with code editor open on a laptop" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">Umbraco</span>
+                <span class="post-card-date">25 May 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/umbraco-delivery-api.html">Three years of the Umbraco Delivery API: where headless-on-the-CMS lands</a></h3>
+              <p class="post-card-excerpt">Three years after the first-party Content Delivery API shipped, the headless-vs-coupled debate has a different shape.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/partials/accessibility.js"></script>
+  <script src="/partials/footer.js"></script>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>
