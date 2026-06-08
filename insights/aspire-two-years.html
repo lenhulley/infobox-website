@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.NET Aspire two years on: where cloud-native .NET actually landed — Infobox Insights</title>
+  <meta name="description" content="Aspire reached general availability in May 2024 as a developer-experience improvement. The 13.4 release in 2026 is a different product — TypeScript AppHost, first-class CLI, named publishers, mature AKS support.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/cube-icon.svg">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/typography.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/sections.css">
+  <link rel="stylesheet" href="/css/utilities.css">
+  <link rel="stylesheet" href="/css/accessibility.css">
+</head>
+<body>
+
+  <script src="/partials/header.js"></script>
+
+  <script src="/partials/mobile-nav.js"></script>
+
+  <main id="main">
+
+    <!-- Hero image -->
+    <div style="width: 100%; aspect-ratio: 21/9; max-height: 480px; overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&h=600&q=80" alt="Earth viewed from orbit at night, city lights forming networks of connection" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Article -->
+    <article class="section bg-page">
+      <div class="container">
+        <div class="grid grid-12">
+          <div class="col-span-12 lg:col-span-8">
+
+            <!-- Meta -->
+            <div style="margin-bottom: var(--space-8);" data-hero-animate>
+              <div class="flex flex-wrap items-center gap-3" style="margin-bottom: var(--space-4);">
+                <span class="tag tag-blue">.NET</span>
+                <span class="tag tag-blue">Cloud-native</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">8 June 2026</span>
+                <span style="font-size: var(--text-sm); color: var(--color-text-secondary);">&middot; 7 min read</span>
+              </div>
+              <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">.NET Aspire two years on: where cloud-native .NET actually landed</h1>
+              <p class="text-lead">Aspire reached general availability in May 2024 as a developer-experience improvement. The 13.4 release in 2026 is a different product &mdash; and the case for picking it up again is stronger than the case for putting it off.</p>
+            </div>
+
+            <!-- Body -->
+            <div class="prose" data-hero-animate>
+              <p>Aspire reached general availability at Microsoft Build on 21 May 2024. At the time the framing was modest: a stack of templates, NuGet packages, and a web dashboard to make running multiple .NET services on a developer machine less painful. The Aspire 13.4 release in 2026 looks like a different product. The AppHost now accepts TypeScript, the CLI is first-class, the deployment story uses named publishers instead of an intermediate manifest, and the Kubernetes integration treats AKS as a planned deployment target rather than a worked example. Anyone who looked at Aspire in late 2024 and decided to wait should look again.</p>
+
+              <h2>The AppHost is the project</h2>
+
+              <p>At Aspire's core is the AppHost: a small project that describes the composition of a distributed application &mdash; services, databases, queues, caches, the lot &mdash; using a fluent API. The <code>builder.AddProject&lt;&gt;()</code>, <code>AddPostgres()</code>, <code>AddRedis()</code> pattern that started as a developer-time convenience now drives deployment, observability, and increasingly the production topology itself. The deliberate decision was to make the AppHost the single source of truth for how the pieces fit together, not just for the inner loop. Two years of releases have followed that line of thinking.</p>
+
+              <p>The 13.4 release promotes the TypeScript AppHost to general availability, having shipped it as a preview in 13.2. The application model is unchanged &mdash; the difference is the authoring surface. Teams with a Node-based stack alongside .NET services no longer need to maintain a parallel C# project just to participate in Aspire. The architectural argument is that Aspire's value is the orchestration model, not the language of its definition.</p>
+
+              <h2>The CLI is no longer optional</h2>
+
+              <p>Aspire 9.4, in mid-2025, took the <code>aspire</code> CLI out of preview. Before that, &ldquo;use Aspire&rdquo; effectively meant &ldquo;use Visual Studio or its equivalent.&rdquo; After 9.4, project creation, run, watch, publish, and deploy are first-class commands. This matters less for the inner-loop experience &mdash; IDEs were always going to handle that &mdash; and more for everything around it: scripting CI builds, standing up ephemeral environments, packaging integration tests that need a real Postgres and a real message broker rather than substitutes.</p>
+
+              <p>The CLI also unlocks the next several pieces. <code>aspire publish</code> and <code>aspire deploy</code> aren't aliases for <code>dotnet build</code>; they are the documented extension points where Aspire hands off to whatever target the team is shipping to.</p>
+
+              <h2>Publishers replaced the manifest format</h2>
+
+              <p>Earlier versions of Aspire used an intermediate manifest format &mdash; a JSON description of the application that downstream tools (azd, others) would consume. As of Aspire 9.2, publishers became the supported extensibility point, plugging directly into the application model to produce Docker Compose files, Kubernetes manifests, Azure resources, or anything else a team's environment requires. <code>aspire publish</code> serialises resources by invoking each registered <code>PublishingCallbackAnnotation</code> in declaration order; <code>aspire deploy</code> runs publish first, then invokes <code>DeployingCallbackAnnotation</code> handlers in the same way.</p>
+
+              <p>The practical effect is that the AppHost becomes the description of the application's topology end to end. A resource declared once gets the local sandbox, the deployment artefacts, and &mdash; through the same metadata &mdash; the dashboard wiring. That is a meaningful contrast to the prevailing infra-as-code pattern, where the topology is described twice (once for developers, once for ops) and the two descriptions drift.</p>
+
+              <h2>Kubernetes is no longer an aside</h2>
+
+              <p>The Kubernetes story is where 13.4 makes its biggest leap. The release adds first-class support for typed cert-manager resources, the Gateway API and Azure Application Gateway for Containers on AKS, arbitrary Kubernetes manifest resources for the things Aspire's resource graph doesn't model directly, and external Helm chart installation as part of the deployment pipeline. The Helm surface itself is cleaner: a single <code>WithHelm(...)</code> call replaces an older split configuration.</p>
+
+              <p>The shift is from &ldquo;Aspire can target Kubernetes if you know what you're doing&rdquo; to &ldquo;Aspire treats Kubernetes-on-Azure as a planned, documented deployment path.&rdquo; That is a different value proposition. Teams choosing between Azure Container Apps and AKS for an Aspire application no longer need to weigh Aspire support as one of the factors &mdash; both targets are now expected.</p>
+
+              <h2>Observability without ceremony</h2>
+
+              <p>The other part of the Aspire pitch that has held up is service defaults. The pattern hasn't changed much since GA: a <code>ServiceDefaults</code> project, referenced by every service, calls a single <code>ConfigureOpenTelemetry</code> method that wires up logging, tracing, and metrics through the .NET OpenTelemetry SDK. Telemetry exports via OTLP by default; the Aspire dashboard ingests it locally during development; the same exporter aims at Application Insights or any other OTLP-compatible backend in production.</p>
+
+              <p>The interesting consequence is what teams have stopped writing. The custom telemetry middleware, the per-project log enrichers wired by hand, the dashboards built service by service &mdash; most of that ceremony has gone, replaced by the framework default. Service defaults are also usable on their own, without the AppHost or orchestration, which makes the OpenTelemetry-on-.NET path Aspire defines genuinely portable.</p>
+
+              <blockquote>
+                The interesting design choice in Aspire is that the AppHost describes the application once, and the toolchain &mdash; dev loop, deployment, observability &mdash; follows from that description. The longer the project lives, the more that single description earns its keep.
+              </blockquote>
+
+              <h2>Where Aspire fits &mdash; and where it doesn't</h2>
+
+              <p>Aspire is not a runtime, not a service mesh, not a replacement for Kubernetes operators or Bicep. It is a way to describe a .NET-based distributed application in code and have a consistent toolchain follow from that description. It earns its keep when the application has more than two or three services and at least one supporting resource (database, cache, queue) that has to behave the same way locally and in production.</p>
+
+              <p>It is a less obvious fit for single-service applications, or for shops where the .NET layer is one tier inside a larger non-.NET system. In those cases the AppHost can become a piece of orchestration that competes with whatever the rest of the platform is already doing. The TypeScript AppHost narrows that gap; it does not close it.</p>
+
+              <h2>Bottom line</h2>
+
+              <p>The cloud-native .NET picture two years ago was a developer-experience improvement on top of the same Kubernetes-or-Container-Apps decision a team would have made anyway. In 2026 it is closer to a coherent stack. The AppHost is the topology description; the CLI is the entry point; publishers and the deploy command are the seam where Aspire hands off to the target environment; service defaults and OpenTelemetry are the observability story. The pieces fit together in a way they did not when Aspire shipped.</p>
+
+              <p>The most useful thing a team that shelved Aspire in 2024 can do is read the 13.4 release notes and decide whether the gaps that put them off then are still gaps. For most .NET-centred shops shipping more than one service, they aren't.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related posts -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="tag tag-silver">Related</span>
+          <h2>More from Infobox</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <article class="post-card" data-reveal data-reveal-delay="0">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=340&q=80" alt="Code editor showing clean, structured source code" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">.NET</span>
+                <span class="post-card-date">21 April 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/blazor.html">Choosing Blazor over React: a .NET team's perspective</a></h3>
+              <p class="post-card-excerpt">Why a .NET-native team would choose Blazor WebAssembly over React, and where the trade-offs actually land.</p>
+            </div>
+          </article>
+
+          <article class="post-card" data-reveal data-reveal-delay="80">
+            <div class="post-card-image" style="overflow: hidden;">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=340&q=80" alt="Close-up of a blue circuit board with intricate copper traces" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="tag tag-blue">AI</span>
+                <span class="post-card-date">11 May 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="/insights/claude-code-hooks.html">Claude Code hooks: the deterministic edge of AI-assisted delivery</a></h3>
+              <p class="post-card-excerpt">Hooks are the part of Claude Code that doesn't roll dice. A technical look at the events, the JSON contract, and why hooks belong in any serious AI-assisted delivery setup.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/partials/accessibility.js"></script>
+  <script src="/partials/footer.js"></script>
+
+  <script src="/js/nav.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>
